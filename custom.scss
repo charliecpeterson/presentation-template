@@ -1,0 +1,650 @@
+/*-- scss:defaults --*/
+
+// ── Brand colors ──────────────────────────────────────────────────────────────
+$brand-cyan:       #6AD1E3;
+$brand-green:      #21A364;
+$brand-teal:       #1C6D72;
+$brand-dark:       #2a2a2a;
+$brand-mid:        #666666;
+$brand-bg:   #ffffff;
+$brand-link:       #0066cc;
+$brand-accent:     #E35B6A;   // use sparingly for warnings/highlights
+
+// ── Sidebar stripe ────────────────────────────────────────────────────────────
+$sidebar-width:   3.5%;
+$sidebar-grad:    linear-gradient(180deg, $brand-cyan 0%, $brand-green 45%, $brand-teal 100%);
+
+// ── Typography ────────────────────────────────────────────────────────────────
+$font-family-sans-serif: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$font-family-monospace:  'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+$presentation-font-size-root: 32px;
+$presentation-line-height: 1.5;
+
+// ── Reveal.js overrides ───────────────────────────────────────────────────────
+$body-bg:         $brand-bg;
+$body-color:      $brand-dark;
+$link-color:      $brand-link;
+$code-block-bg:   #f6f8fa;
+
+
+/*-- scss:rules --*/
+
+// ── Left sidebar stripe ───────────────────────────────────────────────────────
+body {
+  background-color: $brand-bg;
+  color: $brand-dark;
+  font-family: $font-family-sans-serif;
+  line-height: $presentation-line-height;
+}
+
+// Sidebar stripe lives on .reveal (not body) so we can hide it cleanly
+// on dark-background section slides via .reveal.has-dark-background::before.
+.reveal {
+  position: relative;
+}
+
+.reveal::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: $sidebar-width;
+  height: 100%;
+  background: $sidebar-grad;
+  z-index: 2;   // above slide content so it's always visible on white slides
+  pointer-events: none;
+}
+
+// ── Slide menu button (hamburger) ─────────────────────────────────────────────
+// Quarto hardcodes left:30px which sits inside the sidebar stripe (~45px wide).
+// Move it just outside the stripe onto the white background.
+.reveal .slide-menu-button {
+  left: calc(#{$sidebar-width} + 8px) !important;
+  bottom: 8px !important;
+  opacity: 0.35;
+  transition: opacity 0.2s;
+
+  &:hover { opacity: 0.85; }
+}
+
+// ── Bottom rule ───────────────────────────────────────────────────────────────
+.reveal::after {
+  content: '';
+  position: absolute;
+  left: 42px; right: 0; bottom: 32px;
+  height: 2px;
+  background: linear-gradient(to right, $brand-teal 0%, $brand-cyan 30%, rgba($brand-cyan, 0.2) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+// ── Title slide ───────────────────────────────────────────────────────────────
+.reveal .slides section#title-slide {
+  text-align: left;
+  padding-left: calc(#{$sidebar-width} + 2.5rem);
+  padding-right: 3rem;
+
+  .title {
+    font-size: 2.6em;
+    font-weight: 700;
+    color: $brand-dark;
+    line-height: 1.15;
+    padding-left: 1rem;
+    border-left: 5px solid $brand-teal;
+    margin-bottom: 0.6rem;
+  }
+
+  .subtitle {
+    font-size: 1em;
+    color: $brand-teal;
+    font-weight: 400;
+    padding-left: 1.3rem;
+    margin-bottom: 1.8rem;
+  }
+
+  // Force left-alignment on all title metadata
+  // (section has class "center" from revealjs which applies text-align:center)
+  p, .date {
+    text-align: left !important;
+    font-size: 0.72em;
+    color: $brand-mid;
+    padding-left: 1.3rem;
+    margin-top: 0.15em;
+  }
+
+  // Author is nested: .quarto-title-authors > .quarto-title-author > .quarto-title-author-name
+  // revealjs/quarto applies centering deep in the tree; em units compound across
+  // levels so only set font-size on the outermost wrapper.
+  .quarto-title-authors {
+    width: 100% !important;
+    max-width: 100% !important;
+    text-align: left !important;
+    padding-left: 1.3rem;
+    font-size: 0.72em;   // set once here — not on children
+    color: $brand-mid;
+    margin-top: 0.15em;
+  }
+  .quarto-title-authors .quarto-title-author,
+  .quarto-title-authors .quarto-title-author-name {
+    width: 100% !important;
+    max-width: 100% !important;
+    text-align: left !important;
+    font-size: 1em;      // inherit, don't compound
+    color: inherit;
+  }
+}
+
+// ── Slide headings ────────────────────────────────────────────────────────────
+h2 {
+  font-size: 1.35em;
+  font-weight: 700;
+  color: $brand-dark;
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  gap: 0.45em;
+  flex-wrap: wrap;
+
+  // Vertical bar accent — echoes the title slide's teal left-bar
+  // Reads as a deliberate design element, not a bullet
+  &::before {
+    content: '';
+    flex-shrink: 0;
+    display: inline-block;
+    width: 5px;
+    height: 1em;
+    background: linear-gradient(180deg, $brand-cyan 0%, $brand-teal 100%);
+    border-radius: 3px;
+    position: relative;
+    top: 0.08em;
+  }
+
+  // Gradient underline
+  &::after {
+    content: '';
+    display: block;
+    width: 100%;
+    flex-basis: 100%;
+    height: 3px;
+    background: linear-gradient(to right, $brand-teal 0%, $brand-cyan 40%, rgba($brand-cyan, 0.15) 100%);
+    border-radius: 2px;
+    margin-top: 0.25em;
+  }
+}
+
+// ── Custom slide-type icons ───────────────────────────────────────────────────
+// Opt-in per slide. Replace the default vertical bar with a topic-specific
+// SVG icon designed for HPC/research presentations.
+//
+// Usage:  ## My Heading {.slide-code}
+// The class lands on the <section> so selectors use: .slide-X h2::before
+//
+// Available:
+//   .slide-code    — >_ terminal prompt   (CLI commands, code examples)
+//   .slide-data    — bar chart            (results, benchmarks, performance)
+//   .slide-compute — CPU chip             (hardware, resources, allocation)
+//   .slide-flow    — >> double chevron    (workflow, setup steps, process)
+//   .slide-cluster — triangle of nodes   (distributed, multi-node, parallel)
+
+// Shared override: swap bar for SVG icon
+%slide-icon-base {
+  h2::before {
+    width: 1.15em !important;
+    height: 1.15em !important;
+    border-radius: 0 !important;
+    top: 0.03em !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+  }
+}
+
+// >_ terminal prompt
+.slide-code {
+  @extend %slide-icon-base;
+  h2::before {
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231C6D72' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='4 9 9 12 4 15'/><line x1='12' y1='15' x2='20' y2='15'/></svg>") !important;
+    background: none;
+  }
+}
+
+// Bar chart — results / benchmarks / data
+.slide-data {
+  @extend %slide-icon-base;
+  h2::before {
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231C6D72' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><line x1='3' y1='20' x2='21' y2='20'/><rect x='4' y='13' width='3' height='7'/><rect x='10.5' y='8' width='3' height='12'/><rect x='17' y='4' width='3' height='16'/></svg>") !important;
+    background: none;
+  }
+}
+
+// CPU chip — hardware / resources / allocation
+.slide-compute {
+  @extend %slide-icon-base;
+  h2::before {
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231C6D72' stroke-width='1.8' stroke-linecap='round'><rect x='7' y='7' width='10' height='10' rx='1'/><line x1='9' y1='7' x2='9' y2='4'/><line x1='15' y1='7' x2='15' y2='4'/><line x1='9' y1='17' x2='9' y2='20'/><line x1='15' y1='17' x2='15' y2='20'/><line x1='7' y1='9' x2='4' y2='9'/><line x1='7' y1='15' x2='4' y2='15'/><line x1='17' y1='9' x2='20' y2='9'/><line x1='17' y1='15' x2='20' y2='15'/></svg>") !important;
+    background: none;
+  }
+}
+
+// Double chevron >> — workflow / setup / steps
+.slide-flow {
+  @extend %slide-icon-base;
+  h2::before {
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231C6D72' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='5 6 12 12 5 18'/><polyline points='12 6 19 12 12 18'/></svg>") !important;
+    background: none;
+  }
+}
+
+// Triangle of nodes — cluster / parallel / distributed
+.slide-cluster {
+  @extend %slide-icon-base;
+  h2::before {
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231C6D72' stroke-width='2' stroke-linecap='round'><circle cx='12' cy='4' r='2'/><circle cx='4' cy='19' r='2'/><circle cx='20' cy='19' r='2'/><line x1='12' y1='6' x2='5' y2='17'/><line x1='12' y1='6' x2='19' y2='17'/><line x1='6' y1='19' x2='18' y2='19'/></svg>") !important;
+    background: none;
+  }
+}
+
+h3 {
+  font-size: 1.05em;
+  color: $brand-teal;
+  font-weight: 600;
+  margin-top: 0.4em;
+}
+
+// ── Hide sidebar stripe + bottom rule on dark-background section slides ───────
+// revealjs adds .has-dark-background to .reveal when the active slide has a
+// dark background. The sidebar stripe and bottom rule look like artifacts on
+// those slides, so suppress them.
+.reveal.has-dark-background::before,
+.reveal.has-dark-background::after {
+  display: none !important;
+}
+
+// ── Section title slides ──────────────────────────────────────────────────────
+.reveal section.has-dark-background {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  h1 {
+    color: #ffffff;
+    font-size: 2.4em;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    position: relative;
+    padding-bottom: 0.55em;
+
+    // Gradient rule — matches body bottom rule language
+    &::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(to right, rgba(#ffffff, 0.7), rgba(#ffffff, 0.15));
+      margin: 0.4em auto 0;
+      border-radius: 2px;
+    }
+  }
+}
+
+// ── Links ─────────────────────────────────────────────────────────────────────
+a {
+  color: $brand-link;
+  text-decoration: none;
+
+  &:hover   { text-decoration: underline; }
+  &:focus   { outline: 2px solid $brand-teal; }
+}
+
+// ── Code blocks ───────────────────────────────────────────────────────────────
+pre, code {
+  font-family: $font-family-monospace;
+  font-size: 0.80em;
+  background-color: $code-block-bg;
+  border-radius: 5px;
+}
+
+pre {
+  padding: 0.65em 0.9em;
+  border-left: 3px solid $brand-teal;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07);
+}
+
+// ── Callouts ──────────────────────────────────────────────────────────────────
+.callout-note    { border-left-color: $brand-cyan  !important; }
+.callout-tip     { border-left-color: $brand-green !important; }
+.callout-warning { border-left-color: $brand-accent !important; }
+
+// ── Utility font-size classes ─────────────────────────────────────────────────
+// Usage: ::: {.text-xs}  ... :::
+.text-xs   { font-size: 0.55em; }
+.text-sm   { font-size: 0.65em; }
+.text-md   { font-size: 0.75em; }
+.text-lg   { font-size: 0.90em; }
+.text-xl   { font-size: 1.10em; }
+
+// ── Layout helpers ────────────────────────────────────────────────────────────
+.center-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.highlight-box {
+  background: lighten($brand-cyan, 30%);
+  border-left: 4px solid $brand-teal;
+  padding: 0.5em 1em;
+  border-radius: 5px;
+  margin: 0.5em 0;
+}
+
+.accent-box {
+  background: lighten($brand-accent, 35%);
+  border-left: 4px solid $brand-accent;
+  padding: 0.5em 1em;
+  border-radius: 5px;
+  margin: 0.5em 0;
+}
+
+// ── Terminal chrome on code blocks ────────────────────────────────────────────
+// Adds a language header bar inside each fenced code block automatically.
+// Quarto puts the language class on the <pre> element (e.g. pre.bash, pre.python).
+// No markup changes needed; purely CSS-driven.
+//
+// Supported: .bash / .sh / .shell, .python, .r
+// All other languages get a neutral "{ } CODE" strip.
+
+div.sourceCode pre {
+  position: relative;
+  padding-top: 2em;        // room for the inline header label
+  border-left: none;       // suppress default teal left-border (replaced by header)
+  border-radius: 6px;
+
+  // Default label — neutral gray for unlabeled blocks
+  &::before {
+    content: '\007B \007D  CODE';   // { }  CODE
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1.65em;
+    background: $brand-mid;
+    color: rgba(#ffffff, 0.88);
+    font-family: $font-family-monospace;
+    font-size: 0.64em;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    display: flex;
+    align-items: center;
+    padding-left: 0.85em;
+    border-radius: 6px 6px 0 0;
+  }
+
+  // Bash / shell
+  &.bash::before,
+  &.sh::before,
+  &.shell::before {
+    content: '$ _  BASH';
+    background: $brand-teal;
+  }
+
+  // Python
+  &.python::before {
+    content: '>>>  PYTHON';
+    background: #2e5a8a;
+  }
+
+  // R
+  &.r::before {
+    content: '>  R';
+    background: #3a6b3a;
+  }
+
+  // Terminal output — dark background, green-tinted text
+  // Usage: ```{.output}
+  &.output {
+    background: #1e2820;
+    color: #b8d4b0;
+    border-left: none;
+
+    &::before {
+      content: '▶  OUTPUT';
+      background: #1a2a1a;
+      color: rgba(#b8d4b0, 0.85);
+    }
+
+    code {
+      background: transparent;
+      color: #b8d4b0;
+    }
+  }
+}
+
+// ── Stat / metric cards ───────────────────────────────────────────────────────
+// Usage:
+//   ::: {.stat-row}
+//   ::: {.stat-card}
+//   **80 GB**
+//   VRAM (A100)
+//   :::
+//   :::
+//
+// Cards lay out in a horizontal flex row. Each card centers a large number
+// above a small label. Stack 2–4 cards per row comfortably.
+
+.stat-row {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin: 0.5em 0;
+}
+
+.stat-card {
+  flex: 1 1 auto;
+  min-width: 6em;
+  background: linear-gradient(135deg, lighten($brand-teal, 62%) 0%, lighten($brand-cyan, 20%) 100%);
+  border: 1.5px solid rgba($brand-teal, 0.25);
+  border-top: 3px solid $brand-teal;
+  border-radius: 6px;
+  padding: 0.5em 0.8em 0.55em;
+  text-align: center;
+
+  // The big metric — wrap in ** ** in the markdown
+  strong {
+    display: block;
+    font-size: 1.7em;
+    font-weight: 700;
+    color: $brand-teal;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  // Label text — everything else in the card div
+  font-size: 0.62em;
+  color: $brand-mid;
+  line-height: 1.3;
+  margin-top: 0.15em;
+}
+
+// ── Status pills ──────────────────────────────────────────────────────────────
+// Inline <span> classes for yes/partial/no state in tables or lists.
+// Usage (in a table cell): `[Yes]{.pill-yes}`  `[Partial]{.pill-partial}`  `[No]{.pill-no}`
+
+%pill-base {
+  display: inline-block;
+  font-size: 0.7em;
+  font-weight: 600;
+  padding: 0.1em 0.55em;
+  border-radius: 999px;
+  letter-spacing: 0.03em;
+  line-height: 1.5;
+  vertical-align: middle;
+}
+
+.pill-yes {
+  @extend %pill-base;
+  background: lighten($brand-green, 50%);
+  color: darken($brand-green, 10%);
+  border: 1px solid lighten($brand-green, 20%);
+}
+
+.pill-partial {
+  @extend %pill-base;
+  background: lighten(#f5a623, 35%);
+  color: darken(#f5a623, 25%);
+  border: 1px solid lighten(#f5a623, 15%);
+}
+
+.pill-no {
+  @extend %pill-base;
+  background: lighten($brand-accent, 35%);
+  color: darken($brand-accent, 10%);
+  border: 1px solid lighten($brand-accent, 20%);
+}
+
+// ── Table styling ─────────────────────────────────────────────────────────────
+// Automatically applies to all tables in slides.
+
+.reveal table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.78em;
+
+  thead tr {
+    background: $brand-teal;
+    color: #ffffff;
+
+    th {
+      padding: 0.4em 0.75em;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      border: none;
+      text-align: left;
+    }
+  }
+
+  tbody {
+    tr:nth-child(odd)  { background: #ffffff; }
+    tr:nth-child(even) { background: rgba($brand-cyan, 0.10); }
+
+    td {
+      padding: 0.35em 0.75em;
+      border-bottom: 1px solid rgba($brand-teal, 0.12);
+      vertical-align: middle;
+    }
+  }
+}
+
+// ── Key finding box ───────────────────────────────────────────────────────────
+// Usage:  ::: {.key-finding}
+//         Your result statement here.
+//         :::
+
+.key-finding {
+  position: relative;
+  background: linear-gradient(135deg, lighten($brand-teal, 62%) 0%, lighten($brand-cyan, 20%) 100%);
+  border-left: 4px solid $brand-teal;
+  border-radius: 0 6px 6px 0;
+  padding: 0.55em 1em 0.55em 1em;
+  margin: 0.6em 0;
+
+  &::before {
+    content: 'KEY FINDING';
+    display: block;
+    font-size: 0.58em;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: $brand-teal;
+    margin-bottom: 0.3em;
+  }
+
+  p { margin: 0; font-size: 0.9em; color: $brand-dark; }
+  strong { color: $brand-teal; }
+}
+
+// ── Pull quote ────────────────────────────────────────────────────────────────
+// Usage:
+//   ::: {.pull-quote}
+//   "The most important result in the paper."
+//
+//   — Author et al. (2024)
+//   :::
+
+.pull-quote {
+  position: relative;
+  padding: 0.8em 1.5em 0.8em 2em;
+  text-align: left;
+
+  // Large decorative opening quote mark
+  &::before {
+    content: '\201C';
+    position: absolute;
+    top: -0.15em;
+    left: 0.1em;
+    font-size: 5em;
+    line-height: 1;
+    color: $brand-cyan;
+    opacity: 0.45;
+    font-family: Georgia, 'Times New Roman', serif;
+    pointer-events: none;
+  }
+
+  // Quote body — first paragraph
+  p:first-child {
+    font-size: 1.05em;
+    font-style: italic;
+    font-weight: 500;
+    color: $brand-dark;
+    line-height: 1.55;
+    margin-bottom: 0.5em;
+    border-left: 3px solid $brand-cyan;
+    padding-left: 0.9em;
+  }
+
+  // Attribution — last paragraph (write: — Author et al.)
+  p:last-child:not(:first-child) {
+    font-size: 0.68em;
+    font-style: normal;
+    font-weight: 600;
+    color: $brand-mid;
+    letter-spacing: 0.04em;
+    padding-left: 1em;
+    margin-top: 0;
+  }
+}
+
+// ── Numbered steps ────────────────────────────────────────────────────────────
+// Usage: wrap an ordered list in ::: {.steps}
+//
+//   ::: {.steps}
+//   1. First step — brief description
+//   2. Second step — brief description
+//   :::
+
+.steps ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  counter-reset: step-counter;
+
+  li {
+    counter-increment: step-counter;
+    display: grid;
+    grid-template-columns: 2em 1fr;
+    gap: 0.6em;
+    align-items: baseline;
+    margin-bottom: 0.65em;
+
+    &::before {
+      content: counter(step-counter, decimal-leading-zero);
+      font-size: 1.3em;
+      font-weight: 700;
+      color: $brand-teal;
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+    }
+  }
+}

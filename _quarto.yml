@@ -1,0 +1,26 @@
+project:
+  type: default
+  output-dir: _output
+
+format:
+  revealjs:
+    theme: [default, custom.scss]
+    transition: slide
+    scrollable: true
+    self-contained: true
+    slide-number: c/t
+    show-slide-number: all
+    date-format: "long"
+    chalkboard: false
+    controls: false
+    footer: "Charles Peterson"
+    width: 1280
+    height: 720
+    center: true
+
+from: markdown+emoji
+
+execute:
+  echo: true
+  warning: false
+  cache: false

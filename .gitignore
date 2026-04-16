@@ -1,0 +1,7 @@
+_output/
+_screenshots*/
+.quarto/
+.claude/
+*.pdf
+*_cache/
+.DS_Store

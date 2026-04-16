@@ -1,0 +1,742 @@
+---
+title: "Presentation Title"
+subtitle: "Subtitle or Workshop Name"
+author: "Charles Peterson"
+date: today
+---
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     STRUCTURE — keep and fill in for every talk
+     ═══════════════════════════════════════════════════════════════════════════ -->
+
+# Overview {visibility="hidden"}
+
+## Overview
+
+::: {.text-md}
+:::: {.columns}
+::: {.column width="60%"}
+
+Brief intro paragraph. What will attendees learn or do?
+
+**Topics covered:**
+
+- Topic one
+- Topic two
+- Topic three
+- Topic four
+
+:::
+::: {.column width="40%"}
+::: {.callout-note appearance="simple"}
+### Note
+An optional note, tip, or heads-up for your audience.
+:::
+:::
+::::
+:::
+
+## Resources & Materials
+
+::: {.text-md}
+:::: {.columns}
+::: {.column width="60%"}
+
+**Slides & materials**
+
+- GitHub: [github.com/YOUR-ORG/REPO](https://github.com)
+- HTML: [your-org.github.io/REPO](https://github.com)
+
+**Software / prerequisites**
+
+- Requirement one
+- Requirement two
+
+**Contact:** [your@email.edu](mailto:your@email.edu)
+
+:::
+::: {.column width="40%"}
+::: {.center-content}
+<!-- Replace with QR code: <img src="assets/qr.png" width="75%"> -->
+:::
+::: {.callout-note appearance="simple"}
+### Before we start
+Any setup step or heads-up attendees should handle right now.
+:::
+:::
+::::
+:::
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     CONTENT PATTERNS
+     Delete what you don't need. Add section breaks as needed.
+     ═══════════════════════════════════════════════════════════════════════════ -->
+
+# Section One {background-color="#1C6D72"}
+
+## Two-Column 60/40 (default)
+
+::: {.text-md}
+:::: {.columns}
+::: {.column width="60%"}
+
+Main explanation or content. This column has more space for prose, bullets, or a snippet.
+
+- Key point one
+- Key point two
+- Key point three
+
+:::
+::: {.column width="40%"}
+::: {.callout-tip appearance="simple"}
+### Best Practice
+Use the narrower column for a callout, image, or summary box — avoid full-width bullet dumps.
+:::
+:::
+::::
+:::
+
+## Two-Column 50/50
+
+::: {.text-md}
+:::: {.columns}
+::: {.column width="50%"}
+
+**Left column heading**
+
+- Point one
+- Point two
+- Point three
+
+:::
+::: {.column width="50%"}
+
+**Right column heading**
+
+- Point A
+- Point B
+- Point C
+
+:::
+::::
+:::
+
+## Comparison (A vs B)
+
+::: {.text-md}
+:::: {.columns}
+::: {.column width="50%"}
+
+::: {.highlight-box}
+**Option A — Recommended**
+:::
+
+- Advantage one
+- Advantage two
+- Advantage three
+
+:::
+::: {.column width="50%"}
+
+::: {.accent-box}
+**Option B — Avoid / Legacy**
+:::
+
+- Drawback one
+- Drawback two
+- Drawback three
+
+:::
+::::
+:::
+
+## Numbered Steps {.slide-flow}
+
+::: {.text-md}
+:::: {.columns}
+::: {.column width="60%"}
+
+::: {.steps}
+1. First step — brief description of what this involves
+2. Second step — brief description of what this involves
+3. Third step — brief description of what this involves
+4. Fourth step — brief description of what this involves
+:::
+
+:::
+::: {.column width="40%"}
+::: {.callout-warning appearance="simple"}
+### Before you start
+Any prerequisites or gotchas the audience should know.
+:::
+:::
+::::
+:::
+
+## Step-by-Step Process {.slide-flow}
+
+::: {.text-md}
+:::: {.columns}
+::: {.column width="60%"}
+
+**Step 1 — Do the first thing**
+
+Brief description of what this step involves.
+
+**Step 2 — Do the second thing**
+
+Brief description of what this step involves.
+
+**Step 3 — Do the third thing**
+
+Brief description of what this step involves.
+
+:::
+::: {.column width="40%"}
+::: {.callout-warning appearance="simple"}
+### Before you start
+List any prerequisites or gotchas the audience should know.
+:::
+:::
+::::
+:::
+
+## Image + Caption
+
+::: {.text-md}
+:::: {.columns}
+::: {.column width="60%"}
+
+::: {.center-content}
+<!-- <img src="assets/diagram.png" width="90%"> -->
+*Placeholder: replace with your diagram or screenshot*
+:::
+
+::: {.text-xs}
+*Caption: describe what the image shows and why it matters.*
+:::
+
+:::
+::: {.column width="40%"}
+
+**What you're looking at:**
+
+- Key observation one
+- Key observation two
+- Key observation three
+
+::: {.callout-note appearance="simple"}
+### Source
+Attribution if needed.
+:::
+
+:::
+::::
+:::
+
+## Slide with Paper / URL Footer
+
+::: {.text-md}
+:::: {.columns}
+::: {.column width="60%"}
+
+Add a `::: footer` div anywhere inside the slide to override the default footer with a citation or URL.
+
+```
+## My Slide
+
+Content here.
+
+::: footer
+Author et al. (2024). *Title*. Journal.
+[doi:10.1234/example](https://doi.org/10.1234/example)
+:::
+```
+
+- Markdown links and italics render in the footer
+- Applies only to that one slide — other slides keep the default
+- Use `.text-xs` inside if the citation is long
+
+:::
+::: {.column width="40%"}
+::: {.callout-tip appearance="simple"}
+### When to use
+Any slide that adapts or reproduces a figure, table, or result from a published source. Keeps attribution visible without cluttering the slide body.
+:::
+:::
+::::
+:::
+
+::: footer
+Smith et al. (2024). *A Great Paper*. Nature. [doi:10.1234/example](https://doi.org/10.1234/example)
+:::
+
+## Pull Quote
+
+::: {.text-md}
+:::: {.columns}
+::: {.column width="65%"}
+
+::: {.pull-quote}
+"A finding or statement you want to highlight — from a paper, a collaborator, or your own work. Works best as a single punchy sentence."
+
+— Author et al. (2024), *Journal Name*
+:::
+
+Supporting context or your response to the quote.
+
+:::
+::: {.column width="35%"}
+::: {.callout-tip appearance="simple"}
+### When to use
+Citing a key paper, framing the problem with someone else's words, or landing a memorable result. Keep it to one sentence.
+:::
+:::
+::::
+:::
+
+## Incremental Reveal
+
+Use `. . .` to pause between bullet groups:
+
+- First point — visible immediately
+
+. . .
+
+- Second point — appears on click
+
+. . .
+
+- Third point — appears on click
+
+::: {.callout-tip appearance="simple"}
+### When to use
+Good for demos or walk-throughs where revealing all bullets at once would give away the answer.
+:::
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     CODE PATTERNS
+     ═══════════════════════════════════════════════════════════════════════════ -->
+
+# Section Two {background-color="#1C6D72"}
+
+## Code — Bash {.slide-code}
+
+::: {.text-md}
+:::: {.columns}
+::: {.column width="60%"}
+
+Brief explanation of what this does.
+
+```{.bash}
+# Step one — set up environment
+module load example/1.0
+
+# Step two — run the job
+example-tool --input data.csv \
+             --output results/
+```
+
+:::
+::: {.column width="40%"}
+::: {.callout-note appearance="simple"}
+### Note
+Any environment-specific note — e.g. required modules or prerequisites.
+:::
+:::
+::::
+:::
+
+## Code — Python {.slide-code}
+
+::: {.text-md}
+:::: {.columns}
+::: {.column width="60%"}
+
+Brief explanation of what this code does.
+
+```{.python}
+# Example Python snippet
+def process(data: list) -> dict:
+    results = {}
+    for item in data:
+        results[item] = item * 2
+    return results
+
+output = process([1, 2, 3])
+print(output)
+```
+
+:::
+::: {.column width="40%"}
+::: {.callout-tip appearance="simple"}
+### Tip
+A helpful note about the code — e.g. library version, common pitfall.
+:::
+:::
+::::
+:::
+
+## Code — R {.slide-code}
+
+::: {.text-md}
+:::: {.columns}
+::: {.column width="60%"}
+
+Brief explanation of what this does.
+
+```{.r}
+library(tidyverse)
+
+data <- read_csv("results.csv")
+
+data |>
+  group_by(condition) |>
+  summarise(mean_val = mean(value, na.rm = TRUE)) |>
+  ggplot(aes(x = condition, y = mean_val)) +
+  geom_col()
+```
+
+:::
+::: {.column width="40%"}
+::: {.callout-tip appearance="simple"}
+### Tip
+A helpful note about the R code above.
+:::
+:::
+::::
+:::
+
+## Code + Output {.slide-code}
+
+Show a command alongside its expected terminal output.
+
+```{.bash}
+example-tool --status --format "%.18i %.30j %.8T"
+```
+
+```{.output}
+              JOBID                           NAME    STATE
+            1234567                    train_model  RUNNING
+            1234568                   preprocess_1  PENDING
+```
+
+::: {.text-xs}
+Fields: JOBID, NAME, STATE
+:::
+
+## Two-Language Comparison {.slide-code}
+
+::: {.text-sm}
+:::: {.columns}
+::: {.column width="50%"}
+
+**Python**
+
+```{.python}
+import subprocess
+
+result = subprocess.run(
+    ["example-tool", "--user", "me"],
+    capture_output=True,
+    text=True,
+)
+print(result.stdout)
+```
+
+:::
+::: {.column width="50%"}
+
+**Bash**
+
+```{.bash}
+example-tool --user $USER \
+  --format="%.18i %.8T"
+```
+
+:::
+::::
+:::
+
+::: {.callout-tip appearance="simple"}
+### When to use which
+Use Python when you need to parse or process output; use Bash for quick one-liners.
+:::
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     DATA & VISUAL PATTERNS
+     ═══════════════════════════════════════════════════════════════════════════ -->
+
+# Section Three {background-color="#1C6D72"}
+
+## Key Metrics {.slide-data}
+
+::: {.text-md}
+:::: {.columns}
+::: {.column width="60%"}
+
+::: {.stat-row}
+::: {.stat-card}
+**1st**
+stat
+label
+:::
+::: {.stat-card}
+**99%**
+stat
+label
+:::
+::: {.stat-card}
+**~10x**
+stat
+label
+:::
+:::
+
+| Feature | Tool A | Tool B | Tool C |
+|---------|--------|--------|--------|
+| Capability X | [Yes]{.pill-yes} | [Yes]{.pill-yes} | [Partial]{.pill-partial} |
+| Capability Y | [No]{.pill-no}  | [Yes]{.pill-yes} | [No]{.pill-no} |
+| Capability Z | [Yes]{.pill-yes} | [Partial]{.pill-partial} | [Yes]{.pill-yes} |
+
+:::
+::: {.column width="40%"}
+::: {.key-finding}
+Tool A achieves **~10x** speedup at comparable accuracy on this benchmark.
+:::
+:::
+::::
+:::
+
+## Callout Reference
+
+Always use `appearance="simple"` on all callouts.
+
+::: {.callout-note appearance="simple"}
+**Note** — General information or context. Cyan left border.
+:::
+
+::: {.callout-tip appearance="simple"}
+**Tip** — Best practice or helpful shortcut. Green left border.
+:::
+
+::: {.callout-warning appearance="simple"}
+**Warning** — Gotcha, known issue, or prerequisite. Red left border.
+:::
+
+::: {.callout-important appearance="simple"}
+**Important** — Critical requirement or action needed.
+:::
+
+## Box & Layout Reference
+
+::: {.highlight-box}
+`.highlight-box` — key takeaway or important point. Teal left border, light cyan background.
+:::
+
+::: {.text-sm}
+Supporting text below the highlight box.
+:::
+
+::: {.accent-box}
+`.accent-box` — warning or caveat. Red left border, light red background. Use sparingly.
+:::
+
+::: {.text-sm}
+Reserve `.accent-box` for genuine risks or gotchas — it draws the eye.
+:::
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     TYPOGRAPHY & ICON REFERENCE
+     ═══════════════════════════════════════════════════════════════════════════ -->
+
+
+## Font Size Classes
+
+Use CSS classes — **never** write `style="font-size:..."`.
+
+::: {.text-xs}
+`.text-xs` — 0.55em — dense tables, fine print, attribution
+:::
+
+::: {.text-sm}
+`.text-sm` — 0.65em — supporting detail on busy slides
+:::
+
+::: {.text-md}
+`.text-md` — 0.75em — **default** for most content-heavy slides
+:::
+
+::: {.text-lg}
+`.text-lg` — 0.90em — slides with less content
+:::
+
+::: {.text-xl}
+`.text-xl` — 1.10em — key statements or emphasis
+:::
+
+## Color Reference
+
+Brand colors — **never change these**:
+
+::: {.text-md}
+| Variable       | Hex       | Use                             |
+|----------------|-----------|---------------------------------|
+| `$brand-cyan`  | `#6AD1E3` | Sidebar gradient, callout-note  |
+| `$brand-green` | `#21A364` | Sidebar gradient, callout-tip   |
+| `$brand-teal`  | `#1C6D72` | Section BG, h3, highlight-box   |
+| `$brand-dark`  | `#2a2a2a` | Body text                       |
+| `$brand-accent`| `#E35B6A` | Warnings only (accent-box)      |
+| `$brand-link`  | `#0066cc` | Hyperlinks                      |
+:::
+
+## Heading Icon Classes {.slide-code}
+
+::: {.text-md}
+:::: {.columns}
+::: {.column width="55%"}
+
+Add a class to any `##` heading to swap the default bar for a topic icon:
+
+| Class | Icon | Use for |
+|---|---|---|
+| `{.slide-code}` | `>_` terminal | CLI, code examples |
+| `{.slide-data}` | bar chart | results, benchmarks |
+| `{.slide-compute}` | CPU chip | hardware, resources |
+| `{.slide-flow}` | `>>` chevrons | workflow, setup steps |
+| `{.slide-cluster}` | node triangle | distributed, parallel |
+
+:::
+::: {.column width="45%"}
+
+::: {.callout-tip appearance="simple"}
+### Usage
+```
+## Running the Tool  {.slide-code}
+## Benchmark Results {.slide-data}
+## Resource Needs    {.slide-compute}
+## Setup Steps       {.slide-flow}
+## Parallel Jobs     {.slide-cluster}
+```
+No class = default vertical bar.
+:::
+
+:::
+::::
+:::
+
+## Icon Demo — Data {.slide-data}
+
+::: {.text-md}
+:::: {.columns}
+::: {.column width="60%"}
+
+Use `{.slide-data}` for results, benchmarks, and performance comparisons.
+
+| Run | Time (s) | Speedup |
+|-----|----------|---------|
+| Baseline | 120 | 1× |
+| Optimized | 18 | 6.7× |
+| GPU | 4 | 30× |
+
+:::
+::: {.column width="40%"}
+::: {.callout-note appearance="simple"}
+### Reading this table
+Each row is an independent run. GPU speedup measured on A100 with batch size 64.
+:::
+:::
+::::
+:::
+
+## Icon Demo — Compute {.slide-compute}
+
+::: {.text-md}
+:::: {.columns}
+::: {.column width="60%"}
+
+Use `{.slide-compute}` for hardware specs, resource allocation, and GPU/CPU requirements.
+
+```{.bash}
+# Request a GPU node
+example-scheduler \
+  --gpus 1 \
+  --mem 40G \
+  --cpus 4
+```
+
+:::
+::: {.column width="40%"}
+::: {.callout-warning appearance="simple"}
+### Before requesting
+Check available resources first to avoid long queue waits.
+:::
+:::
+::::
+:::
+
+## Icon Demo — Cluster {.slide-cluster}
+
+::: {.text-md}
+:::: {.columns}
+::: {.column width="50%"}
+
+**Single-node**
+
+- All processes on one machine
+- Simpler scheduling
+- Use for most workloads
+
+:::
+::: {.column width="50%"}
+
+**Multi-node**
+
+- Processes span multiple machines
+- Requires distributed framework
+- Use for very large jobs
+
+:::
+::::
+
+::: {.accent-box}
+Use `{.slide-cluster}` for distributed computing, parallel jobs, and multi-node architecture slides.
+:::
+:::
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     CLOSING — keep for every talk
+     ═══════════════════════════════════════════════════════════════════════════ -->
+
+
+# Closing {visibility="hidden"}
+
+## Summary
+
+::: {.text-md}
+:::: {.columns}
+::: {.column width="60%"}
+
+**Key takeaways:**
+
+- Takeaway one
+- Takeaway two
+- Takeaway three
+
+**Next steps:**
+
+- Step one
+- Step two
+
+:::
+::: {.column width="40%"}
+::: {.callout-note appearance="simple"}
+### Questions?
+
+[your@email.edu](mailto:your@email.edu)
+
+[github.com/YOUR-ORG](https://github.com)
+:::
+:::
+::::
+:::
