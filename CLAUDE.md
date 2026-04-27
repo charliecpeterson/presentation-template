@@ -24,6 +24,21 @@ npx decktape reveal --screenshots --screenshots-format png \
 Use the conda env matching the project directory name, or the `quarto` env if present.
 Quarto must be available on PATH.
 
+## Publishing to GitHub Pages (optional)
+If the talk should be served from GitHub Pages, two changes:
+
+1. In `_quarto.yml`, set `output-dir: docs` (Pages serves from `/docs` on `main`).
+2. In `build.sh`, after `quarto render`, copy the rendered HTML to `index.html`
+   so the root URL works:
+   ```bash
+   cp "${HTML_FILE}" "${OUTPUT_DIR}/index.html"
+   ```
+3. On GitHub: **Settings → Pages → Source: Deploy from a branch → Branch:
+   `main` / `/docs`**.
+
+The rendered HTML is `self-contained: true`, so a plain copy is sufficient —
+no asset wrangling needed.
+
 ---
 
 ## Style & layout rules
@@ -190,7 +205,13 @@ Assign the icon by content type. Most slides use the default (no class).
 
 ## What NOT to change
 - `.reveal::before` (left sidebar stripe) — core brand element
-- `.reveal::after` (bottom rule) — core brand element
+- `.reveal::after` (bottom rule) — styling is a core brand element. Position
+  (`bottom: 52px`) is intentional: the rule sits *above* the footer metadata
+  row (Quarto's footer text, per-slide `::: footer` citations, slide number —
+  all at ~10–18px from bottom) and acts as the visual divider between them.
+  Per-slide `::: footer` citations render below the rule, overriding the
+  default footer for that slide. Keep the styling; do not move the rule
+  back over the footer text.
 - The `$brand-*` color variables in `custom.scss`
 - The `footer:` value in `_quarto.yml` without asking
 - `controls: false` in `_quarto.yml` — navigation arrows are disabled intentionally
@@ -206,6 +227,23 @@ Assign the icon by content type. Most slides use the default (no class).
   elements should use `font-size: 1em` to inherit without multiplying
 - **Terminal chrome uses `pre.bash` not `:has(code.bash)`** — decktape's Chromium doesn't support
   the `:has()` selector; always target the `<pre>` element's class directly
+- **Brand bottom rule must sit ABOVE the footer row** — Quarto's default footer text is at
+  `bottom: 18px` with a line-height that extends up to ~40px. If `.reveal::after` is positioned
+  anywhere between ~10–45px, the rule collides with the footer text's ascenders and appears to
+  overlap. Keep the rule at `bottom: 52px` (or higher). Do not "fix" by pushing the footer up
+  into the slide content — push the rule up instead.
+- **`. . .` fragment marker can render as literal text** — when surrounded by certain block types
+  (callouts, highlight-boxes, image divs) without enough whitespace, the `. . .` paragraph renders
+  as visible dots instead of acting as a fragment break. Always put blank lines on both sides, and
+  if it still renders literally, drop the fragment — the slide usually reads fine without it.
+- **Tall images overflow without a height constraint** — `<img width="95%">` only constrains
+  width, so portrait or tall screenshots blow past the bottom of the slide. Use
+  `style="max-width: 100%; max-height: 540px; width: auto; height: auto;"` (or similar) to cap
+  both dimensions. See the "Image — constrained for screenshots" pattern in `template.qmd`.
+- **Dense slides need `.text-sm`** — `.text-md` (default) is sized for 4–6 bullets. If you find
+  yourself adding a 5th or 6th column, a third short paragraph, or a callout *and* a stat-row,
+  switch the slide's outermost wrapper to `.text-sm` (0.65em) before trying to compress content.
+  Cheaper than rewording.
 
 ---
 
@@ -234,9 +272,13 @@ copy via `new-presentation.sh`, keep the slides you need, replace placeholder co
 | "Explain a concept with two sides"                 | Two-Column 50/50                            |
 | "Main content + a callout on the side"             | Two-Column 60/40                            |
 | "Compare two options / before vs after"            | Comparison slide (highlight/accent box)     |
+| "Compare three options / show a spectrum"          | Three-Column 33/33/33 (`.text-sm`)          |
+| "Show several A-vs-B examples on one slide"        | Stacked Comparisons (multiple A/B rows)     |
 | "Quick numbered list of steps"                     | `.steps` list, `{.slide-flow}` heading      |
 | "Walk through a process with descriptions"         | Step-by-Step prose slide, `{.slide-flow}`   |
 | "Show a diagram / screenshot with notes"           | Image + Caption (60/40)                     |
+| "Walk through a real screenshot of a tool / demo"  | Big Screenshot + Bullets (55/45, `.text-sm`)|
+| "Tall portrait screenshot (terminal, chat, mobile)"| Image — constrained for screenshots         |
 | "Quote a finding / cite a paper"                   | `.pull-quote` block (65/35)                 |
 | "Show Python / R / code example"                   | Code block — language auto-labeled          |
 | "Show a shell command"                             | Code block `.bash` — teal header            |

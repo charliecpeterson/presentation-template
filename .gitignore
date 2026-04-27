@@ -5,3 +5,5 @@ _screenshots*/
 *.pdf
 *_cache/
 .DS_Store
+
+/.quarto/

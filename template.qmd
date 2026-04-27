@@ -121,6 +121,63 @@ Use the narrower column for a callout, image, or summary box — avoid full-widt
 ::::
 :::
 
+## Three-Column 33/33/33
+
+::: {.text-sm}
+
+A spectrum or three-way comparison. Use `.text-sm` by default — three columns
+get cramped at `.text-md`. Highlight-boxes label each column.
+
+:::: {.columns}
+::: {.column width="33%"}
+
+::: {.highlight-box}
+**Option / Tier / Phase 1**
+:::
+
+*"One-line tagline."*
+
+- Point one
+- Point two
+- Point three
+
+*Cost or signal line.*
+
+:::
+::: {.column width="33%"}
+
+::: {.highlight-box}
+**Option / Tier / Phase 2**
+:::
+
+*"One-line tagline."*
+
+- Point one
+- Point two
+- Point three
+
+*Cost or signal line.*
+
+:::
+::: {.column width="33%"}
+
+::: {.highlight-box}
+**Option / Tier / Phase 3**
+:::
+
+*"One-line tagline."*
+
+- Point one
+- Point two
+- Point three
+
+*Cost or signal line.*
+
+:::
+::::
+
+:::
+
 ## Comparison (A vs B)
 
 ::: {.text-md}
@@ -148,6 +205,63 @@ Use the narrower column for a callout, image, or summary box — avoid full-widt
 
 :::
 ::::
+:::
+
+## Stacked Comparisons (multiple A-vs-B examples)
+
+::: {.text-sm}
+
+Two or more A-vs-B rows on one slide — useful when you want to show *several*
+examples of the same contrast (e.g. "generic answer" vs. "domain-aware answer"
+across a couple of error types).
+
+**Example 1 — first error / question / scenario**
+
+:::: {.columns}
+::: {.column width="50%"}
+
+::: {.accent-box}
+**Wrong / Generic:** *one-line answer.*
+:::
+
+Why it fails in this context.
+
+:::
+::: {.column width="50%"}
+
+::: {.highlight-box}
+**Right / Domain-aware:** what the correct response actually does.
+:::
+
+:::
+::::
+
+**Example 2 — second error / question / scenario**
+
+:::: {.columns}
+::: {.column width="50%"}
+
+::: {.accent-box}
+**Wrong / Generic:** *one-line answer.*
+:::
+
+Why it fails in this context.
+
+:::
+::: {.column width="50%"}
+
+::: {.highlight-box}
+**Right / Domain-aware:** what the correct response actually does.
+:::
+
+:::
+::::
+
+:::
+
+::: {.callout-important appearance="simple"}
+### The point
+A closing line that names the pattern across both examples.
 :::
 
 ## Numbered Steps {.slide-flow}
@@ -228,6 +342,62 @@ List any prerequisites or gotchas the audience should know.
 ::: {.callout-note appearance="simple"}
 ### Source
 Attribution if needed.
+:::
+
+:::
+::::
+:::
+
+## Image — constrained for screenshots
+
+::: {.text-md}
+
+`width="90%"` only constrains width. Tall portrait screenshots (terminals,
+chat UIs, anything mobile-shaped) blow past the slide bottom and overlap
+the footer. Use the inline style below to cap *both* dimensions:
+
+```
+<img src="assets/screenshot.png"
+     style="max-width: 100%; max-height: 540px; width: auto; height: auto;">
+```
+
+The image scales down to whichever dimension hits its limit first, preserving
+aspect ratio. Tune `max-height` to leave room for any caption/bullets in the
+same column (~540px works for full-column images; ~580px if you drop the caption).
+
+::: {.callout-tip appearance="simple"}
+### Why inline style here
+The "no inline `style`" rule applies to font-size (which compounds across
+nested wrappers). Image dimensions don't compound, so inline `style` for
+`max-height` is fine — and avoids adding a single-purpose CSS class.
+:::
+:::
+
+## Big Screenshot + Bullets (demo slide)
+
+::: {.text-sm}
+:::: {.columns}
+::: {.column width="55%"}
+
+::: {.center-content}
+<!-- <img src="assets/demo.png"
+     style="max-width: 100%; max-height: 580px; width: auto; height: auto;"> -->
+*Placeholder: a real screenshot of the thing in use*
+:::
+
+:::
+::: {.column width="45%"}
+
+**One-line framing of what's on screen.**
+
+- What the user did
+- What the system did in response
+- The non-obvious detail to call attention to (file uploaded? real result returned? specific value visible?)
+
+::: {.callout-tip appearance="simple"}
+### Why this slide
+One real screenshot beats four placeholder boxes. Walk the audience through
+the screenshot verbally; let the bullets carry the framing.
 :::
 
 :::

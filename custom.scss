@@ -67,10 +67,15 @@ body {
 }
 
 // ── Bottom rule ───────────────────────────────────────────────────────────────
+// Sits above Quarto's footer stack (text at 18px, slide# at 10px, menu at 8px)
+// and their line-heights (~22px), so at bottom: 52px the rule is clearly
+// above everything. The rule acts as the visual divider between slide content
+// and the metadata row below it. Per-slide `::: footer` citations also render
+// in that row, below the rule.
 .reveal::after {
   content: '';
   position: absolute;
-  left: 42px; right: 0; bottom: 32px;
+  left: 42px; right: 0; bottom: 52px;
   height: 2px;
   background: linear-gradient(to right, $brand-teal 0%, $brand-cyan 30%, rgba($brand-cyan, 0.2) 100%);
   z-index: 1;
