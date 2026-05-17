@@ -32,11 +32,17 @@ fi
 # ── Copy template ─────────────────────────────────────────────────────────────
 mkdir -p "$TARGET_DIR/assets"
 
-cp "$TEMPLATE_DIR/_quarto.yml"  "$TARGET_DIR/_quarto.yml"
-cp "$TEMPLATE_DIR/custom.scss"  "$TARGET_DIR/custom.scss"
-cp "$TEMPLATE_DIR/CLAUDE.md"    "$TARGET_DIR/CLAUDE.md"
-cp "$TEMPLATE_DIR/build.sh"     "$TARGET_DIR/build.sh"
+cp "$TEMPLATE_DIR/_quarto.yml"        "$TARGET_DIR/_quarto.yml"
+cp "$TEMPLATE_DIR/custom.scss"        "$TARGET_DIR/custom.scss"
+cp "$TEMPLATE_DIR/AGENTS.md"          "$TARGET_DIR/AGENTS.md"
+cp "$TEMPLATE_DIR/slide-patterns.md"  "$TARGET_DIR/slide-patterns.md"
+cp "$TEMPLATE_DIR/content-design.md"  "$TARGET_DIR/content-design.md"
+cp "$TEMPLATE_DIR/build.sh"           "$TARGET_DIR/build.sh"
 chmod +x "$TARGET_DIR/build.sh"
+
+# CLAUDE.md is a symlink → AGENTS.md so Claude Code reads it natively.
+# Recreate the symlink in the target directory (don't dereference).
+ln -s AGENTS.md "$TARGET_DIR/CLAUDE.md"
 
 # Copy template.qmd → <dir-name>.qmd and substitute title/subtitle
 sed \
