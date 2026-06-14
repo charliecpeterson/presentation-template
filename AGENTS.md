@@ -51,6 +51,37 @@ slides you name, reads them, and returns a terse per-slide pass/clip report. It
 returns text, not images — so screenshot directly yourself when you or the user
 need to actually see a slide.
 
+### Reviewing how slides actually look
+
+The deck is HTML; what the audience sees is the **screen** render, so review there:
+
+- **`quarto preview file.qmd`** in a browser is the source of truth. Press `F` for
+  fullscreen (actual presentation size) and arrow through. This is the only view
+  that shows screen-only behaviour: code wrapping, the copy button, scrollbars,
+  fragments, hover, auto-animate.
+- **decktape** screenshots render in *print* context (good for a quick PDF-style
+  overview, and what `build.sh` uses for the PDF) but they hide screen-only bugs —
+  code that scrolls sideways, the copy button, overlay scrollbars all look fine in
+  decktape and broken live. Do not sign off on those from a decktape PNG.
+- For a **screen-accurate screenshot of one slide** (e.g. to confirm a fix without
+  opening a browser), drive headless Chrome/puppeteer at a 1280×720 viewport and
+  navigate by slide id: `file.html#/<slide-id>` (the id is the slugified heading,
+  e.g. `#/code-bash`). Querying `el.scrollWidth > el.clientWidth` is the reliable
+  way to catch overflow a screenshot can hide. There's a small inspector at
+  `~/scratch/inspect-slide.js`.
+
+What to scan for, worst-case slides first (dense tables, 3+ columns, long code,
+images + callout):
+
+- **Overflow / clipping** — all content sits within the frame and *above* the brand
+  rule; nothing runs off the bottom. reveal won't scroll the slide (global
+  `scrollable` is off by design), so overflow clips silently — catch it here.
+- **No horizontal scrollbar** on code blocks (you can't use it mid-talk).
+- **Readable sizes** — code and body text legible from the back of a room; bump a
+  dense slide to `.text-sm` rather than cramming.
+- **Layout variety** — no more than two slides of the same layout in a row (see
+  `content-design.md` for the engagement rule).
+
 ### Verifying a CSS / visual change actually landed
 
 Two traps when confirming a `custom.scss` edit reached the output:

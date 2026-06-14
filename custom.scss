@@ -322,6 +322,11 @@ pre, code {
 // it only wraps in print, which is why decktape hides the bug). Force wrapping.
 .reveal div.sourceCode pre code { white-space: pre-wrap; }
 
+// div.sourceCode is overflow:auto and the pre sizes ~19px wider than it (box
+// model), so even wrapped code that fits shows a phantom horizontal scrollbar.
+// Make the pre fit its container so the scrollbar never appears.
+.reveal div.sourceCode pre { box-sizing: border-box; max-width: 100%; width: 100%; }
+
 pre {
   padding: 0.65em 0.9em;
   border-left: 3px solid $brand-teal;
