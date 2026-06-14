@@ -436,18 +436,23 @@ div.sourceCode pre {
       color: rgba(#b8d4b0, 0.85);
     }
 
-    code {
+    // Force the terminal-green color onto the highlight spans too — Quarto wraps
+    // output in syntax-coloured <span>s (dark blue), invisible on the dark bg.
+    code,
+    code span {
       background: transparent;
-      color: #b8d4b0;
+      color: #cfe8c4 !important;
     }
   }
 }
 
-// Copy button: `code-copy: true` in _quarto.yml makes it always-on (default is
-// hover-only). Quarto ships it faint, gates the glyph on pre:hover, and adds a
-// 5px margin that jams it into the language header's rounded corner so it looks
-// half-hidden by the banner. Seat it flush in the header bar instead: kill the
-// margin, match the bar height, dark chip, glyph forced visible, on top.
+// Copy button: `code-copy: true` makes it always-on (default is hover-only).
+// Quarto ships it faint, gates the glyph on pre:hover, and adds a 5px corner
+// margin that jams it into the header. Make it an obvious copy/paste button:
+// a white chip with a teal clipboard glyph, sitting just below the header bar.
+// White works on BOTH the light code blocks and the dark .output block, and the
+// success checkmark (teal/green, inherits currentColor) reads on white — a dark
+// chip hid it on the dark output background.
 .reveal div.sourceCode {
   position: relative;
 
@@ -456,12 +461,14 @@ div.sourceCode pre {
     top: 1.9em;                // clear the ~22px header bar (button font ~13px, so 1.9em ≈ 25px)
     right: 0.6em;              // inset from the right edge (no sideways scroll to reach it)
     margin: 0;                 // kill Quarto's 5px corner offset
-    padding: 0.1em 0.4em;
-    background: rgba(0, 0, 0, 0.4);    // solid chip on the light code area
+    padding: 0.15em 0.45em;
+    background: #ffffff;
+    border: 1px solid rgba($brand-teal, 0.55);
     border-radius: 5px;
-    color: #ffffff;
+    color: $brand-teal;        // clipboard + check glyph inherit this
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
 
-    &:hover { background: rgba(0, 0, 0, 0.6); }
+    &:hover { background: lighten($brand-teal, 62%); }
 
     .bi::before { display: inline-block !important; }   // don't wait for hover
   }
