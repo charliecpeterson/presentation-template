@@ -1,7 +1,7 @@
 _output/
 _screenshots*/
 .quarto/
-.claude/
+.claude/settings.local.json
 *.pdf
 *_cache/
 .DS_Store

@@ -45,6 +45,12 @@ npx decktape reveal --screenshots --screenshots-format png \
 # Note: screenshots-directory MUST be absolute; PDF name MUST be relative
 ```
 
+For batch visual QA without filling the main context with PNGs, delegate to the
+**`slide-reviewer`** sub-agent (`.claude/agents/`): it renders, screenshots the
+slides you name, reads them, and returns a terse per-slide pass/clip report. It
+returns text, not images — so screenshot directly yourself when you or the user
+need to actually see a slide.
+
 ### Verifying a CSS / visual change actually landed
 
 Two traps when confirming a `custom.scss` edit reached the output:
@@ -97,9 +103,30 @@ no asset wrangling needed.
 | `build.sh`            | Render HTML + produce PDF in one command (`./build.sh`)         |
 | `new-presentation.sh` | Scaffold a new talk (`./new-presentation.sh <dir> "Title"`)     |
 
-`template.qmd` includes one example of every key slide pattern. When building
-a new presentation, copy via `new-presentation.sh`, keep the slides you need,
-replace placeholder content.
+`template.qmd` includes one example of every key slide pattern. Keep the slides
+you need, replace placeholder content.
+
+### Starting a new talk
+
+This repo is a **GitHub template repository**. The primary way to start a talk is:
+
+```bash
+gh repo create my-talk \
+  --template charliecpeterson/presentation-template \
+  --private --clone
+cd my-talk
+# edit the title/subtitle in template.qmd's YAML header, then write
+```
+
+That makes a fresh repo with its own clean history (not the template's), the
+remote already set, and every template file — including `.claude/agents/`,
+`assets/personal/`, and these docs — copied in. Do NOT `git clone` the template
+and repoint the remote: that drags the template's entire commit history into the
+talk.
+
+`new-presentation.sh` remains as an offline/local fallback (it also substitutes
+the title/subtitle), but it creates the talk as a sibling directory and you must
+`git init` and create the remote yourself.
 
 ### Extra slides / appendix
 
