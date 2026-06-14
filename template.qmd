@@ -661,6 +661,55 @@ example-tool --user $USER \
 Use Python when you need to parse or process output; use Bash for quick one-liners.
 :::
 
+## Progressive Code Highlight {.slide-code}
+
+::: {.text-md}
+Add `code-line-numbers` to walk a block one region per click instead of splitting
+it across slides. `|` separates steps; `1-2` is a range, `5` one line, `8,10` a list.
+:::
+
+```{.bash code-line-numbers="1-2|4|6-9"}
+module load gcc/12
+module load openmpi/4.1
+
+mpicc -O3 wave.c -o wave
+
+sbatch --nodes=4 \
+       --ntasks-per-node=8 \
+       --time=01:00:00 \
+       run.slurm
+```
+
+::: {.callout-tip appearance="simple"}
+### Why this beats splitting the code
+The audience keeps the whole block in view while you spotlight one part at a time.
+:::
+
+## Auto-Animate: build a command {auto-animate=true}
+
+Same title + `{auto-animate=true}` on both slides → reveal morphs one into the next.
+
+```bash
+sbatch run.slurm
+```
+
+## Auto-Animate: build a command {auto-animate=true}
+
+Same title + `{auto-animate=true}` on both slides → reveal morphs one into the next.
+
+```bash
+sbatch --nodes=4 \
+       --gpus=2 \
+       --time=02:00:00 \
+       run.slurm
+```
+
+::: {.notes}
+Auto-animate matches elements between the two slides and animates the diff — here
+the command appears to grow. Works for code, boxes, images, and text. In PDF export
+both slides render as separate frames (start and end state), which is fine.
+:::
+
 <!-- ═══════════════════════════════════════════════════════════════════════════
      DATA & VISUAL PATTERNS
      ═══════════════════════════════════════════════════════════════════════════ -->

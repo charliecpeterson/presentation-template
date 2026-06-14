@@ -144,6 +144,8 @@ for the markup detail.
 | "Show Python / R / code example"                   | Code block — language auto-labeled          |
 | "Show a shell command"                             | Code block `.bash` — teal header            |
 | "Show a command AND its output"                    | Code block + ` ```{.output} ` block         |
+| "Walk through code line-by-line on click"          | Code block + `code-line-numbers="1\|3-5\|8"` |
+| "Morph code/box/diagram between two slides"        | Two `##` slides, both `{auto-animate=true}`  |
 | "Compare code in two languages"                    | Two-column 50/50 with code blocks           |
 | "Display key numbers / metrics"                    | `.stat-row` + `.stat-card`                  |
 | "Feature comparison table"                         | Table + `.pill-yes/partial/no`              |

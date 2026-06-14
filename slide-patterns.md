@@ -86,6 +86,22 @@ Long lines **wrap** (`code-overflow: wrap` in `_quarto.yml`) rather than scrolli
 horizontal scrollbar to fight on a slide. The copy button is pinned into the language header strip
 and always visible (not hover-only).
 
+**Progressive highlight** — walk a block one region per click instead of splitting it across slides:
+
+````markdown
+```{.bash code-line-numbers="1-2|4|6-9"}
+...
+```
+````
+
+`|` separates click steps; `1-2` is a range, `5` a single line, `8,10` a list. The whole block stays
+visible while you spotlight one part.
+
+**Auto-animate** — put `{auto-animate=true}` on two consecutive `##` slides and reveal *morphs*
+matching elements (code, boxes, images, text) from the first into the second — e.g. a command that
+grows line by line, a box that moves/resizes. Keep the two titles identical so only the body animates.
+In PDF export the two slides render as separate start/end frames.
+
 ### Per-slide footer override
 
 To replace the default footer on a single slide with a citation or URL:
