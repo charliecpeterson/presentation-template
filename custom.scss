@@ -305,10 +305,16 @@ a {
 // ── Code blocks ───────────────────────────────────────────────────────────────
 pre, code {
   font-family: $font-family-monospace;
-  font-size: 0.80em;
   background-color: $code-block-bg;
   border-radius: 5px;
 }
+
+// reveal ships `.reveal pre { font-size: .55em }`, which outranks a bare `pre`
+// rule (0,1,1 vs 0,0,1) — so block code renders tiny unless overridden at
+// matching specificity. `.reveal pre code` is `inherit`, so code text follows.
+// This compounds with any .text-* wrapper (e.g. .text-md → 0.92 × 0.75), which
+// is the intended behaviour.
+.reveal pre { font-size: 0.88em; }
 
 pre {
   padding: 0.65em 0.9em;
@@ -427,18 +433,24 @@ div.sourceCode pre {
 }
 
 // Copy button: `code-copy: true` in _quarto.yml makes it always-on (default is
-// hover-only). Quarto still gates the glyph on pre:hover via .bi::before display
-// and ships it faint, so force the glyph visible and give the button a dark
-// translucent chip so it reads against the colored language-header bar it sits in.
+// hover-only). Quarto ships it faint, gates the glyph on pre:hover, and adds a
+// 5px margin that jams it into the language header's rounded corner so it looks
+// half-hidden by the banner. Seat it flush in the header bar instead: kill the
+// margin, match the bar height, dark chip, glyph forced visible, on top.
 .reveal div.sourceCode {
   position: relative;
 
   .code-copy-button {
     z-index: 12;               // above the language-header ::before bar
-    background: rgba(0, 0, 0, 0.28);
-    border-radius: 4px;
+    top: 0;
+    right: 0;
+    margin: 0;                 // Quarto's 5px margin jams it into the rounded corner
+    padding: 0.3em 0.5em;
+    background: rgba(0, 0, 0, 0.42);   // solid chip so it reads, not a faint ghost
+    border-radius: 0 6px 0 6px;        // tuck into the bar's top-right corner
+    color: #ffffff;
 
-    &:hover { background: rgba(0, 0, 0, 0.45); }
+    &:hover { background: rgba(0, 0, 0, 0.62); }
 
     .bi::before { display: inline-block !important; }   // don't wait for hover
   }

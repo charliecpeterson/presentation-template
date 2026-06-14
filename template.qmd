@@ -668,22 +668,18 @@ Add `code-line-numbers` to walk a block one region per click instead of splittin
 it across slides. `|` separates steps; `1-2` is a range, `5` one line, `8,10` a list.
 :::
 
-```{.bash code-line-numbers="1-2|4|6-9"}
+```{.bash code-line-numbers="1-2|4|6-8"}
 module load gcc/12
 module load openmpi/4.1
 
 mpicc -O3 wave.c -o wave
 
-sbatch --nodes=4 \
-       --ntasks-per-node=8 \
+sbatch --nodes=4 --ntasks-per-node=8 \
        --time=01:00:00 \
        run.slurm
 ```
 
-::: {.callout-tip appearance="simple"}
-### Why this beats splitting the code
-The audience keeps the whole block in view while you spotlight one part at a time.
-:::
+The whole block stays in view while you spotlight one part at a time.
 
 ## Auto-Animate: build a command {auto-animate=true}
 
