@@ -123,6 +123,8 @@ for the markup detail.
 | "Warn about a gotcha"                              | `.callout-warning` or `.accent-box`         |
 | "Cite a source on just this slide"                 | `::: footer` div at bottom of slide         |
 | "Reveal bullets one at a time"                     | `. . .` fragments between bullet groups     |
+| "Toggle two images/versions in the same spot"      | `.r-stack` + fade fragments (swap in place) |
+| "Add speaker notes / presenter cues"               | `::: {.notes}` div (presenter view only)    |
 | "Start a new major section"                        | `# Title {background-color="#1C6D72"}`      |
 
 If the user is asking what to *say* (not how to render), load

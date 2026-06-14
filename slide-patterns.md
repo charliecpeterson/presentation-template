@@ -202,6 +202,38 @@ div; `.table-compact` tightens padding and font further.
 Positions teal label chips in percent coordinates over an image so they track
 it as it scales. Use `**bold**` inside a label for a cyan-highlighted key term.
 
+### Swap in place (r-stack)
+
+```markdown
+::: {.r-stack}
+::: {.fragment .fade-out fragment-index=0}
+<img src="assets/before.png">
+:::
+::: {.fragment .fade-in-then-out fragment-index=0}
+<img src="assets/after.png">
+:::
+:::
+```
+
+Stacks its children in the same spot; the fade fragments toggle between them on
+click (A fades out as B fades in, same `fragment-index`). Use for before/after,
+A-vs-B comparisons, or layering diagram steps. Works with images, cards, or
+`.scroll-box` code blocks. All reveal.js built-ins — no custom CSS. For more
+than two states, give each a successive `fragment-index` and the matching
+`.fade-in-then-out`. Note: fragments inside an r-stack flatten in PDF export
+(decktape shows the layers overlapping), so keep the swap optional to the point.
+
+### Speaker notes
+
+```markdown
+::: {.notes}
+What to say here — not shown on the slide.
+:::
+```
+
+Visible only in presenter view (press `s` during the talk); hidden on the slide
+and in PDF. Use for delivery cues, not content the audience needs to see.
+
 ---
 
 ## Slide authoring guidelines

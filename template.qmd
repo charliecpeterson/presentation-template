@@ -358,12 +358,14 @@ the footer. Use the inline style below to cap *both* dimensions:
 
 ```
 <img src="assets/screenshot.png"
-     style="max-width: 100%; max-height: 540px; width: auto; height: auto;">
+     style="max-width: 100%; max-height: 540px; width: auto; height: auto; border-radius: 6px;">
 ```
 
 The image scales down to whichever dimension hits its limit first, preserving
 aspect ratio. Tune `max-height` to leave room for any caption/bullets in the
 same column (~540px works for full-column images; ~580px if you drop the caption).
+`border-radius: 6px` softens screenshot corners — keep it for UI/terminal grabs,
+drop it for logos or diagrams where square corners read cleaner.
 
 ::: {.callout-tip appearance="simple"}
 ### Why inline style here
@@ -482,6 +484,32 @@ Use `. . .` to pause between bullet groups:
 ::: {.callout-tip appearance="simple"}
 ### When to use
 Good for demos or walk-throughs where revealing all bullets at once would give away the answer.
+:::
+
+## Swap in Place (r-stack)
+
+::: {.text-md}
+Toggle two (or more) things in the *same spot* on click — A fades out as B
+fades in. Good for before/after, vendor-A-vs-vendor-B, or layering a diagram.
+Works with images, cards, or code blocks (here, two cards):
+:::
+
+::: {.r-stack}
+::: {.fragment .fade-out fragment-index=0}
+::: {.highlight-box}
+**Option A** — shown first. Click to swap it out.
+:::
+:::
+::: {.fragment .fade-in-then-out fragment-index=0}
+::: {.accent-box}
+**Option B** — replaces A in place on the first click.
+:::
+:::
+:::
+
+::: {.notes}
+Speaker notes live in `::: {.notes}` — visible in presenter view (press `s`),
+hidden on the slide and in PDF. Use them for what to *say*, not what to show.
 :::
 
 <!-- ═══════════════════════════════════════════════════════════════════════════
