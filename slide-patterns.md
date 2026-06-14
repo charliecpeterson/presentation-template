@@ -118,6 +118,31 @@ Smith et al. (2024). *A Great Paper*. [doi:10.1234](https://doi.org)
 
 Do NOT use `{footer="..."}` as a heading attribute — it doesn't work in Quarto.
 
+For a **research talk**, this is the citation pattern: put the paper a figure or
+result came from in `::: footer` and repeat the same citation on every slide of
+that section, so the source is always visible where the figure is. It renders
+below the brand rule, small, and overrides the global footer for that slide.
+
+### Scientific notation & math
+
+No setup needed — MathJax ships with revealjs and sub/superscript are on by default
+(with `self-contained: true` it all renders offline):
+
+```markdown
+Water is H~2~O; the actinyl ion is AnO~2~^2+^.          <!-- ~sub~  ^super^ -->
+
+Inline: the gap is $\Delta G = 8$ kcal/mol.            <!-- $…$ -->
+Arrow: An^3+^ + 3 R^-^ $\rightarrow$ AnR~3~.
+
+$$ M_{ij} = \frac{Z_i Z_j}{R_{ij}} \quad (i \neq j) $$  <!-- $$…$$ display -->
+```
+
+### Acknowledgments slide
+
+A 60/40 columns slide near the end: collaborators (with affiliations) on the left,
+funding/grants on the right, a one-line thanks above. Standard close for a research
+talk, before the Questions slide. See the example in `template.qmd`.
+
 ---
 
 ## CSS components

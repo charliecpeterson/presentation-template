@@ -156,6 +156,9 @@ for the markup detail.
 | "Highlight a takeaway"                             | `.highlight-box`                            |
 | "Warn about a gotcha"                              | `.callout-warning` or `.accent-box`         |
 | "Cite a source on just this slide"                 | `::: footer` div at bottom of slide         |
+| "Cite the paper a figure/result came from"         | `::: footer` citation (repeat per section)   |
+| "Chemistry / math: sub/superscript, equations"     | `~x~` `^x^`, `$…$` inline, `$$…$$` display   |
+| "Acknowledgments / contributors + funding"         | Acknowledgments slide (60/40 columns)        |
 | "Reveal bullets one at a time"                     | `. . .` fragments between bullet groups     |
 | "Toggle two images/versions in the same spot"      | `.r-stack` + fade fragments (swap in place) |
 | "Add speaker notes / presenter cues"               | `::: {.notes}` div (presenter view only)    |
