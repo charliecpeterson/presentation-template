@@ -86,6 +86,23 @@ no asset wrangling needed.
 a new presentation, copy via `new-presentation.sh`, keep the slides you need,
 replace placeholder content.
 
+### Extra slides / appendix
+
+The deck ends with an `# Extra Slides` section: a parking lot for slides that
+aren't in the main flow but shouldn't be deleted — backup detail, answers to
+likely questions, or material the audience can browse/download afterward. When
+the user says they have more slides than time, want to "hold," "park," "stash,"
+or "keep for later/afterward" a slide, or want to cut something without losing
+it — move it into this section rather than deleting it.
+
+Mark every appendix slide (and the section divider) `{visibility="uncounted"}`.
+Uncounted slides fully render and ship in the HTML/PDF and stay navigable, but
+they don't count toward the main talk's `c/t` slide number. To promote one back
+into the talk, move it up into the right section and drop the attribute.
+
+Do NOT use `{visibility="hidden"}` for this — hidden slides render blank in the
+PDF (see gotchas). `uncounted` is the one to use.
+
 ---
 
 ## Slide-type catalog — intent → pattern

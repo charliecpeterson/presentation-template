@@ -66,6 +66,12 @@ Use `# Section Title {background-color="#1C6D72"}` for section dividers.
 the Overview and Closing sections — these are structurally required by revealjs to group `##` slides.
 They appear as blank slides in PDF export; this is an accepted limitation.
 
+For an appendix/parking-lot of slides kept out of the main flow but still
+shippable, use `{visibility="uncounted"}` instead (on both the `#` divider and
+each `##` slide). Uncounted slides render, stay navigable, and ship in the PDF —
+they just don't count toward the `c/t` slide number. See the `# Extra Slides`
+section at the end of `template.qmd`.
+
 ### Code blocks
 
 Always specify the language: ` ```{.python} `, ` ```{.bash} `, ` ```{.r} `

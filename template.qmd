@@ -988,3 +988,30 @@ Use `{.slide-cluster}` for distributed computing, parallel jobs, and multi-node 
 :::
 ::::
 :::
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     EXTRA SLIDES / APPENDIX
+     Parking lot for slides not in the main flow. They still render and ship in
+     the HTML/PDF, so the audience can browse or download them afterward, and
+     you can jump to one if a question or spare time calls for it. Mark every
+     slide here {visibility="uncounted"} so it stays reachable but doesn't count
+     toward the main talk's c/t slide number. To promote one into the talk, move
+     it up into the relevant section and drop the attribute. Do NOT use
+     {visibility="hidden"} — that yields blank slides in the PDF.
+     ═══════════════════════════════════════════════════════════════════════════ -->
+
+# Extra Slides {visibility="uncounted" background-color="#1C6D72"}
+
+## Parked Example {visibility="uncounted"}
+
+::: {.text-md}
+A slide you cut from the main flow but want to keep — for backup, for a likely
+question, or for the audience to read afterward. It renders and is downloadable;
+it just doesn't show up in the slide count.
+:::
+
+::: {.callout-note appearance="simple"}
+### How to use this section
+Drop any cut or backup slide below. To bring one back into the talk, move it up
+into the right section and remove `{visibility="uncounted"}`.
+:::
