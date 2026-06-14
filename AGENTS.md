@@ -115,6 +115,9 @@ for the markup detail.
 | "Compare code in two languages"                    | Two-column 50/50 with code blocks           |
 | "Display key numbers / metrics"                    | `.stat-row` + `.stat-card`                  |
 | "Feature comparison table"                         | Table + `.pill-yes/partial/no`              |
+| "Dense matrix / 20+ row table"                     | `.table-compact` wrapper (inside `.text-xs`)|
+| "Long code / transcript / SKILL.md to scroll"      | `.scroll-box` (or `.scroll-box.prose`)      |
+| "Screenshot with callout labels on it"             | `.annotated-shot` + `.shot-label` chips      |
 | "Highlight a single key result"                    | `.key-finding` box                          |
 | "Highlight a takeaway"                             | `.highlight-box`                            |
 | "Warn about a gotcha"                              | `.callout-warning` or `.accent-box`         |
@@ -162,6 +165,11 @@ If the user is asking what to *say* (not how to render), load
   (callouts, highlight-boxes, image divs) without enough whitespace, the `. . .` paragraph renders
   as visible dots instead of acting as a fragment break. Always put blank lines on both sides, and
   if it still renders literally, drop the fragment — the slide usually reads fine without it.
+- **Never inline `<svg>` in the `.qmd`** — Quarto runs inline HTML through a parser that lowercases
+  case-sensitive SVG attributes (`viewBox`→`viewbox`) and drops camelCase elements (`markerWidth`,
+  `feDropShadow`, `stdDeviation`). The coordinate system dies and every `<text>` reflows as plain
+  paragraphs. Put the diagram in its own file under `assets/*.svg` and reference it with
+  `<img src="assets/foo.svg">`; `self-contained: true` inlines it at render.
 - **Tall images overflow without a height constraint** — `<img width="95%">` only constrains
   width, so portrait or tall screenshots blow past the bottom of the slide. Use
   `style="max-width: 100%; max-height: 540px; width: auto; height: auto;"` (or similar) to cap

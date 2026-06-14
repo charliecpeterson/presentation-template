@@ -716,6 +716,56 @@ Supporting text below the highlight box.
 Reserve `.accent-box` for genuine risks or gotchas — it draws the eye.
 :::
 
+## Scroll Box (long artifacts) {.slide-code}
+
+::: {.text-md}
+For a full file, transcript, or long output the audience can scroll and copy.
+The block scrolls inside a fixed height instead of overflowing the slide.
+:::
+
+::: {.scroll-box .short}
+```bash
+# Wrap any long code/text block in ::: {.scroll-box} ... :::
+# Height variants: .tall (600px), default (460px), .short (340px), .shorter (265px).
+# For rendered markdown instead of a code fence, use .scroll-box.prose.
+for i in $(seq 1 40); do
+  echo "line $i — this list is longer than the slide, so the box scrolls"
+done
+```
+:::
+
+## Compact Table (dense matrices)
+
+::: {.text-xs}
+::: {.table-compact}
+| App | Feat A | Feat B | Feat C | Feat D |
+|-----|--------|--------|--------|--------|
+| One   | [Yes]{.pill-yes} | [Partial]{.pill-partial} | [No]{.pill-no}  | [Yes]{.pill-yes} |
+| Two   | [No]{.pill-no}   | [Yes]{.pill-yes}         | [Yes]{.pill-yes}| [Partial]{.pill-partial} |
+| Three | [Yes]{.pill-yes} | [Yes]{.pill-yes}         | [Partial]{.pill-partial} | [No]{.pill-no} |
+:::
+:::
+
+::: {.text-sm}
+Wrap a ~20+ row table in `.text-xs` then `.table-compact` to fit it on one slide.
+:::
+
+## Annotated Screenshot
+
+::: {.text-md}
+Position teal label chips in percent coordinates over an image so they track it
+as it scales. Use `**bold**` inside a label for a cyan-highlighted term.
+:::
+
+```
+::: {.annotated-shot}
+<img src="assets/screenshot.png"
+     style="max-width: 100%; max-height: 480px; width: auto; height: auto;">
+[Step 1 — open the panel]{.shot-label style="left:8%; top:18%;"}
+[**Result** appears here]{.shot-label style="left:55%; top:70%;"}
+:::
+```
+
 <!-- ═══════════════════════════════════════════════════════════════════════════
      TYPOGRAPHY & ICON REFERENCE
      ═══════════════════════════════════════════════════════════════════════════ -->
@@ -726,7 +776,7 @@ Reserve `.accent-box` for genuine risks or gotchas — it draws the eye.
 Use CSS classes — **never** write `style="font-size:..."`.
 
 ::: {.text-xs}
-`.text-xs` — 0.55em — dense tables, fine print, attribution
+`.text-xs` — 0.62em — dense tables, fine print, attribution
 :::
 
 ::: {.text-sm}

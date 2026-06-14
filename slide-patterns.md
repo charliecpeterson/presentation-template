@@ -20,7 +20,7 @@ removed there, update this file in the same commit.
 
 | Class      | Size   | When to use                             |
 |------------|--------|-----------------------------------------|
-| `.text-xs` | 0.55em | Dense tables, fine print, attribution   |
+| `.text-xs` | 0.62em | Dense tables, fine print, attribution   |
 | `.text-sm` | 0.65em | Supporting detail on busy slides        |
 | `.text-md` | 0.75em | **Default** for most content-heavy slides |
 | `.text-lg` | 0.90em | Slides with less content                |
@@ -118,7 +118,7 @@ Renders with a large decorative `"` mark, italic body with cyan left border, sma
 :::
 ```
 
-Renders as `01 / 02 / 03` teal counters in a grid layout. Use with `{.slide-flow}` heading class.
+Renders as `01 / 02 / 03` teal counters beside each step. Use with `{.slide-flow}` heading class.
 
 ### Stat cards
 
@@ -157,6 +157,50 @@ Tool A achieves **~10x** speedup at comparable accuracy.
 ```
 
 Teal left border, light background, `KEY FINDING` label auto-prepended. Bold text renders in teal.
+
+### Scroll box (long code / transcripts)
+
+```markdown
+::: {.scroll-box}
+` ```python
+# a long file the audience can scroll through and copy
+... `
+:::
+```
+
+Caps the block at a fixed height and scrolls inside it, so a full `SKILL.md`,
+a long transcript, or a big output block stays on one slide. Variants:
+`.scroll-box.tall` (600px), `.short` (340px), `.shorter` (265px). For content
+shown as *rendered markdown* (headings, tables) rather than a code fence, use
+`.scroll-box.prose` — the box itself scrolls and gets a bordered card.
+
+### Compact table (dense matrices)
+
+```markdown
+::: {.text-xs}
+::: {.table-compact}
+| App | Feat A | Feat B | ... |
+|-----|--------|--------|-----|
+...
+:::
+:::
+```
+
+For ~20+ row tables that overflow at normal size. Wrap inside a `.text-xs`
+div; `.table-compact` tightens padding and font further.
+
+### Annotated screenshot
+
+```markdown
+::: {.annotated-shot}
+<img src="assets/screenshot.png" style="max-width:100%; max-height:540px;">
+[Step 1: open the panel]{.shot-label style="left:8%; top:18%;"}
+[**Result** appears here]{.shot-label style="left:55%; top:70%;"}
+:::
+```
+
+Positions teal label chips in percent coordinates over an image so they track
+it as it scales. Use `**bold**` inside a label for a cyan-highlighted key term.
 
 ---
 

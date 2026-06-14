@@ -323,7 +323,7 @@ pre {
 
 // ── Utility font-size classes ─────────────────────────────────────────────────
 // Usage: ::: {.text-xs}  ... :::
-.text-xs   { font-size: 0.55em; }
+.text-xs   { font-size: 0.62em; }
 .text-sm   { font-size: 0.65em; }
 .text-md   { font-size: 0.75em; }
 .text-lg   { font-size: 0.90em; }
@@ -423,6 +423,36 @@ div.sourceCode pre {
       background: transparent;
       color: #b8d4b0;
     }
+  }
+}
+
+// ── Scrollable artifact blocks ─────────────────────────────────────────────────
+// Wrap a long code/text block in ::: {.scroll-box} ... ::: so it stays inside the
+// slide and scrolls inside its own fixed height. Built for showing full SKILL.md
+// files, long AI transcripts, or example output the audience can scroll through
+// and copy (Quarto's per-block copy button still works inside the box).
+//
+// `.scroll-box` caps at ~460px (full-column). `.scroll-box.tall` allows more for
+// a slide whose whole point is the artifact. Tune during visual QA, not here.
+.scroll-box {
+  pre {
+    max-height: 460px;
+    overflow-y: auto;
+  }
+
+  &.tall pre { max-height: 600px; }
+  &.short pre { max-height: 340px; }
+  &.shorter pre { max-height: 265px; }
+
+  // Rendered-markdown variant: the box itself scrolls. For transcripts shown
+  // as rendered markdown (headings, tables, bold) instead of a code fence.
+  &.prose {
+    max-height: 540px;
+    overflow-y: auto;
+    border: 1px solid rgba($brand-teal, 0.35);
+    border-radius: 8px;
+    background: #fcfcfc;
+    padding: 0.2em 0.9em;
   }
 }
 
@@ -543,6 +573,51 @@ div.sourceCode pre {
   }
 }
 
+// Compact variant for dense matrices (~20+ rows). Wrap the table:
+// ::: {.table-compact}  |...|  :::
+// 0.64 inside a .text-xs wrapper ≈ the pre-bump 0.55×0.72 effective size;
+// the 20+ row app matrix overflows the slide at anything larger.
+.reveal .table-compact table {
+  font-size: 0.64em;
+
+  thead tr th { padding: 0.22em 0.5em; }
+  tbody td    { padding: 0.12em 0.5em; }
+
+  .pill-yes, .pill-partial, .pill-no {
+    font-size: 0.85em;
+    padding: 0.03em 0.4em;
+  }
+}
+
+// Annotated screenshot: relative wrapper sized to its image, with label
+// chips absolutely positioned in percent coordinates so they track the
+// image as it scales. Usage:
+//   ::: {.annotated-shot}
+//   <img src="...">
+//   [Label text]{.shot-label style="left:10%; top:20%;"}
+//   :::
+.reveal .annotated-shot {
+  position: relative;
+  display: inline-block;
+  line-height: 0;
+
+  img { display: block; }
+
+  .shot-label {
+    position: absolute;
+    background: rgba($brand-teal, 0.93);
+    color: #ffffff;
+    font-size: 19px;
+    line-height: 1.3;
+    padding: 0.4em 0.7em;
+    border-radius: 6px;
+    max-width: 34%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+
+    strong { color: $brand-cyan; }
+  }
+}
+
 // ── Key finding box ───────────────────────────────────────────────────────────
 // Usage:  ::: {.key-finding}
 //         Your result statement here.
@@ -629,26 +704,33 @@ div.sourceCode pre {
 //   2. Second step — brief description
 //   :::
 
-.steps ol {
+// The .reveal prefix is load-bearing: reveal ships `.reveal ol[type="1"]
+// {list-style-type: decimal}` (specificity 0,2,1), which outranks a bare
+// `.steps ol` and paints duplicate numbers next to the chips.
+.reveal .steps ol {
   list-style: none;
   padding: 0;
   margin: 0;
   counter-reset: step-counter;
 
+  // Absolute-positioned number rather than a grid cell: a step whose text
+  // mixes <strong> and a trailing text node (e.g. "**Title** — description")
+  // would otherwise split into separate grid items and wrap one word per line.
   li {
     counter-increment: step-counter;
-    display: grid;
-    grid-template-columns: 2em 1fr;
-    gap: 0.6em;
-    align-items: baseline;
+    position: relative;
+    padding-left: 2.6em;
     margin-bottom: 0.65em;
 
     &::before {
       content: counter(step-counter, decimal-leading-zero);
+      position: absolute;
+      left: 0;
+      top: 0;
       font-size: 1.3em;
       font-weight: 700;
       color: $brand-teal;
-      line-height: 1.25;
+      line-height: 1.15;
       letter-spacing: -0.02em;
     }
   }
