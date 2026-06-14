@@ -798,10 +798,10 @@ The block scrolls inside a fixed height instead of overflowing the slide.
 
 ::: {.scroll-box .short}
 ```bash
-# Wrap any long code/text block in ::: {.scroll-box} ... :::
-# Height variants: .tall (600px), default (460px), .short (340px), .shorter (265px).
-# For rendered markdown instead of a code fence, use .scroll-box.prose.
-# This block is intentionally long so the branded scrollbar appears.
+# Wrap a long block in ::: {.scroll-box} ... :::
+# Variants: .tall / default / .short / .shorter
+# Rendered markdown? use .scroll-box.prose
+# Intentionally long so the scrollbar shows.
 module load python/3.11
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt

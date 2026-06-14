@@ -320,7 +320,11 @@ pre, code {
 // outranks both `pre>code.sourceCode{pre-wrap}` and Quarto's `code-overflow: wrap`
 // — so on SCREEN long lines scroll sideways (a scrollbar you can't use mid-talk;
 // it only wraps in print, which is why decktape hides the bug). Force wrapping.
-.reveal div.sourceCode pre code { white-space: pre-wrap; }
+.reveal div.sourceCode pre code {
+  white-space: pre-wrap;
+  word-break: normal;          // don't split identifiers/numbers mid-character
+  overflow-wrap: break-word;   // wrap at spaces; break only a token too long to fit
+}
 
 // div.sourceCode is overflow:auto and the pre sizes ~19px wider than it (box
 // model), so even wrapped code that fits shows a phantom horizontal scrollbar.
@@ -487,6 +491,11 @@ div.sourceCode pre {
     max-height: 460px;
     overflow-y: auto;
   }
+
+  // reveal gives the inner <code> its OWN `overflow:auto; max-height:400px`, so a
+  // tall block scrolls twice — once on <code>, once on the .scroll-box <pre>
+  // ("two scrollbars"). Neutralise the inner one so only the <pre> scrolls.
+  pre code { overflow: visible; max-height: none; }
 
   &.tall pre { max-height: 600px; }
   &.short pre { max-height: 340px; }
