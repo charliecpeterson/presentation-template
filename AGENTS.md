@@ -45,6 +45,21 @@ npx decktape reveal --screenshots --screenshots-format png \
 # Note: screenshots-directory MUST be absolute; PDF name MUST be relative
 ```
 
+### Verifying a CSS / visual change actually landed
+
+Two traps when confirming a `custom.scss` edit reached the output:
+
+- **The compiled theme CSS is URL-encoded inside a `<link href="data:text/css,…">`,
+  not a plain `<style>` block.** Grepping `_output/*.html` for a selector or rule
+  fails — `{` is `%7B`, spaces are `%20`, etc. To search it, decode the data URI
+  first, e.g.
+  `python3 -c "import re,urllib.parse;h=open('_output/template.html').read();css=''.join(urllib.parse.unquote(x) for x in re.findall(r'data:text/css,([^\"]*)',h));print('rule' in css)"`.
+  Don't conclude a rule "didn't compile" from a raw grep — that's a false negative,
+  not a stale cache.
+- **decktape screenshots are a print/export context.** Hover-only affordances and
+  overlay scrollbars may not appear in them even when they work live. Confirm those
+  in `quarto preview` in a real browser, not from a PNG.
+
 ## Environment
 
 Use the conda env matching the project directory name, or the `quarto` env
