@@ -426,6 +426,24 @@ div.sourceCode pre {
   }
 }
 
+// Copy button: `code-copy: true` in _quarto.yml makes it always-on (default is
+// hover-only). Quarto still gates the glyph on pre:hover via .bi::before display
+// and ships it faint, so force the glyph visible and give the button a dark
+// translucent chip so it reads against the colored language-header bar it sits in.
+.reveal div.sourceCode {
+  position: relative;
+
+  .code-copy-button {
+    z-index: 12;               // above the language-header ::before bar
+    background: rgba(0, 0, 0, 0.28);
+    border-radius: 4px;
+
+    &:hover { background: rgba(0, 0, 0, 0.45); }
+
+    .bi::before { display: inline-block !important; }   // don't wait for hover
+  }
+}
+
 // ── Scrollable artifact blocks ─────────────────────────────────────────────────
 // Wrap a long code/text block in ::: {.scroll-box} ... ::: so it stays inside the
 // slide and scrolls inside its own fixed height. Built for showing full SKILL.md
@@ -453,6 +471,22 @@ div.sourceCode pre {
     border-radius: 8px;
     background: #fcfcfc;
     padding: 0.2em 0.9em;
+  }
+
+  // Brand the one scrollbar so it reads as the intended scroll region rather
+  // than a stray browser bar. (Code wraps via code-overflow: wrap, so this is
+  // the only scrollbar in the box — no horizontal bar.)
+  pre, &.prose {
+    scrollbar-width: thin;
+    scrollbar-color: rgba($brand-teal, 0.55) transparent;
+
+    &::-webkit-scrollbar { width: 10px; }
+    &::-webkit-scrollbar-track { background: transparent; }
+    &::-webkit-scrollbar-thumb {
+      background: rgba($brand-teal, 0.55);
+      border-radius: 6px;
+    }
+    &::-webkit-scrollbar-thumb:hover { background: rgba($brand-teal, 0.8); }
   }
 }
 

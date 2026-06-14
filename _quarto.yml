@@ -6,7 +6,8 @@ format:
   revealjs:
     theme: [default, custom.scss]
     transition: slide
-    scrollable: true
+    code-overflow: wrap
+    code-copy: true
     self-contained: true
     slide-number: c/t
     show-slide-number: all

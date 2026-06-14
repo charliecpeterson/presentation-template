@@ -82,6 +82,10 @@ Language labels come from the code fence class.
 For terminal output (dark background, green text), use ` ```{.output} `. This signals "what the user
 sees in the terminal", not code to type.
 
+Long lines **wrap** (`code-overflow: wrap` in `_quarto.yml`) rather than scrolling sideways — no
+horizontal scrollbar to fight on a slide. The copy button is pinned into the language header strip
+and always visible (not hover-only).
+
 ### Per-slide footer override
 
 To replace the default footer on a single slide with a citation or URL:
@@ -179,6 +183,12 @@ a long transcript, or a big output block stays on one slide. Variants:
 `.scroll-box.tall` (600px), `.short` (340px), `.shorter` (265px). For content
 shown as *rendered markdown* (headings, tables) rather than a code fence, use
 `.scroll-box.prose` — the box itself scrolls and gets a bordered card.
+
+The box has exactly one scrollbar (vertical, branded teal): code wraps instead
+of scrolling sideways, and global slide-scroll is off, so there's no second bar.
+Keep a scroll-box slide sparse — title + box, little else — so the box is the
+only thing that needs to scroll. If a slide genuinely needs the *whole* slide to
+scroll, add `{.scrollable}` to that `##` heading (it's off by default).
 
 ### Compact table (dense matrices)
 

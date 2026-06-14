@@ -162,6 +162,10 @@ If the user is asking what to *say* (not how to render), load
 - The `$brand-*` color variables in `custom.scss`
 - The `footer:` value in `_quarto.yml` without asking
 - `controls: false` in `_quarto.yml` — navigation arrows are disabled intentionally
+- Global `scrollable` is intentionally OFF — do not re-add `scrollable: true`. It puts a
+  second scrollbar on the *slide* on top of any `.scroll-box`'s inner one (the "two sliders"
+  problem). For a slide that genuinely must scroll as a whole, add `{.scrollable}` to that one
+  `##` heading. Long code wraps via `code-overflow: wrap`, so it doesn't need slide scroll either.
 
 ## Known gotchas — do not reintroduce these bugs
 

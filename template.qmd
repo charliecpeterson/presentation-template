@@ -756,9 +756,24 @@ The block scrolls inside a fixed height instead of overflowing the slide.
 # Wrap any long code/text block in ::: {.scroll-box} ... :::
 # Height variants: .tall (600px), default (460px), .short (340px), .shorter (265px).
 # For rendered markdown instead of a code fence, use .scroll-box.prose.
-for i in $(seq 1 40); do
-  echo "line $i — this list is longer than the slide, so the box scrolls"
+# This block is intentionally long so the branded scrollbar appears.
+module load python/3.11
+python -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+
+for shard in $(seq 0 7); do
+  python train.py \
+    --shard "$shard" \
+    --epochs 50 \
+    --batch-size 256 \
+    --lr 3e-4 \
+    --checkpoint "ckpt/shard_${shard}.pt" \
+    --log "logs/shard_${shard}.jsonl"
 done
+
+python merge_checkpoints.py --in ckpt/ --out model_final.pt
+python evaluate.py --model model_final.pt --split test
+echo "done — the copy button stays pinned in the header while this scrolls"
 ```
 :::
 
