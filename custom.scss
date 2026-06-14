@@ -316,6 +316,12 @@ pre, code {
 // is the intended behaviour.
 .reveal pre { font-size: 0.88em; }
 
+// reveal forces `.reveal pre.sourceCode code { white-space: pre }` (0,2,2), which
+// outranks both `pre>code.sourceCode{pre-wrap}` and Quarto's `code-overflow: wrap`
+// — so on SCREEN long lines scroll sideways (a scrollbar you can't use mid-talk;
+// it only wraps in print, which is why decktape hides the bug). Force wrapping.
+.reveal div.sourceCode pre code { white-space: pre-wrap; }
+
 pre {
   padding: 0.65em 0.9em;
   border-left: 3px solid $brand-teal;
@@ -442,15 +448,15 @@ div.sourceCode pre {
 
   .code-copy-button {
     z-index: 12;               // above the language-header ::before bar
-    top: 0;
-    right: 0;
-    margin: 0;                 // Quarto's 5px margin jams it into the rounded corner
-    padding: 0.3em 0.5em;
-    background: rgba(0, 0, 0, 0.42);   // solid chip so it reads, not a faint ghost
-    border-radius: 0 6px 0 6px;        // tuck into the bar's top-right corner
+    top: 1.9em;                // clear the ~22px header bar (button font ~13px, so 1.9em ≈ 25px)
+    right: 0.6em;              // inset from the right edge (no sideways scroll to reach it)
+    margin: 0;                 // kill Quarto's 5px corner offset
+    padding: 0.1em 0.4em;
+    background: rgba(0, 0, 0, 0.4);    // solid chip on the light code area
+    border-radius: 5px;
     color: #ffffff;
 
-    &:hover { background: rgba(0, 0, 0, 0.62); }
+    &:hover { background: rgba(0, 0, 0, 0.6); }
 
     .bi::before { display: inline-block !important; }   // don't wait for hover
   }

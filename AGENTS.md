@@ -250,6 +250,15 @@ If the user is asking what to *say* (not how to render), load
   yourself adding a 5th or 6th column, a third short paragraph, or a callout *and* a stat-row,
   switch the slide's outermost wrapper to `.text-sm` (0.65em) before trying to compress content.
   Cheaper than rewording.
+- **reveal overrides code `font-size` and `white-space` — and decktape hides it.** reveal ships
+  `.reveal pre { font-size: .55em }` and `.reveal pre.sourceCode code { white-space: pre }`, which
+  outrank bare `pre`/`code` rules AND Quarto's `code-overflow: wrap`. So a plain `pre { font-size }`
+  does nothing, and code never wraps on screen (long lines scroll sideways — a scrollbar you can't
+  use mid-talk). Override with `.reveal`-prefixed selectors (`custom.scss` already does). Critically,
+  **decktape renders in print context** where code wraps by default and copy buttons behave
+  differently, so it will NOT show these screen-only bugs. Verify code blocks in a real screen
+  context — `quarto preview`, or headless Chrome/puppeteer at a 1280×720 viewport — not from a
+  decktape screenshot.
 
 ---
 
