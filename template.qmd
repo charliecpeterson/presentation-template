@@ -1000,6 +1000,10 @@ Use `{.slide-cluster}` for distributed computing, parallel jobs, and multi-node 
 
 [github.com/YOUR-ORG](https://github.com)
 :::
+
+<!-- Closing-slide cat (swap for any in assets/personal/, or remove). -->
+<img src="assets/personal/cat-orange.jpg"
+     style="max-width: 100%; max-height: 230px; width: auto; height: auto; border-radius: 6px;">
 :::
 ::::
 :::

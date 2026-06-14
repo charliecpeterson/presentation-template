@@ -250,6 +250,26 @@ What to say here — not shown on the slide.
 Visible only in presenter view (press `s` during the talk); hidden on the slide
 and in PDF. Use for delivery cues, not content the audience needs to see.
 
+### Free-form placement (.absolute)
+
+```markdown
+![](assets/personal/cat-padfoot.jpg){.absolute top=120 right=40 width="300"}
+![](logo.png){.absolute bottom=20 left=40 width="200"}
+```
+
+Places an element at exact slide coordinates (`top`/`bottom`/`left`/`right` in px,
+plus `width`/`height`), independent of the normal flow. Use for a logo/ecosystem
+wall (several logos scattered across a slide), overlapping elements, or pinning a
+small photo in a corner. reveal.js built-in — no custom CSS. Coordinates are on
+the 1280×720 canvas; keep elements clear of the sidebar stripe (left ~45px) and
+the bottom rule (below ~52px).
+
+### Reusable personal photos
+
+Cats, hedgehog, and a photo of me live in `assets/personal/` (see its README).
+Reference with `<img src="assets/personal/cat-orange.jpg" ...>`. The closing
+slide pattern uses one by default — the running joke is a cat on the final slide.
+
 ---
 
 ## Slide authoring guidelines

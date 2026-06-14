@@ -157,6 +157,8 @@ for the markup detail.
 | "Reveal bullets one at a time"                     | `. . .` fragments between bullet groups     |
 | "Toggle two images/versions in the same spot"      | `.r-stack` + fade fragments (swap in place) |
 | "Add speaker notes / presenter cues"               | `::: {.notes}` div (presenter view only)    |
+| "Scatter logos / place things at exact spots"      | `.absolute` (top/left/right/bottom + width)  |
+| "Cat / personal photo on the closing slide"        | `assets/personal/` (see its README)          |
 | "Start a new major section"                        | `# Title {background-color="#1C6D72"}`      |
 
 If the user is asking what to *say* (not how to render), load
