@@ -82,9 +82,11 @@ Language labels come from the code fence class.
 For terminal output (dark background, green text), use ` ```{.output} `. This signals "what the user
 sees in the terminal", not code to type.
 
-Long lines **wrap** (`code-overflow: wrap` in `_quarto.yml`) rather than scrolling sideways — no
-horizontal scrollbar to fight on a slide. The copy button is pinned into the language header strip
-and always visible (not hover-only).
+Long lines **wrap** at word boundaries rather than scrolling sideways — no horizontal scrollbar to
+fight on a slide (reveal's own `white-space: pre` is overridden in `custom.scss`; `code-overflow: wrap`
+alone doesn't win). The copy button is always-on (`code-copy: true`), styled as a white chip with a
+teal clipboard icon sitting just below the language-header bar — visible on both light code blocks and
+the dark `.output` block.
 
 **Progressive highlight** — walk a block one region per click instead of splitting it across slides:
 
