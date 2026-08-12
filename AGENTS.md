@@ -67,8 +67,7 @@ The deck is HTML; what the audience sees is the **screen** render, so review the
   opening a browser), drive headless Chrome/puppeteer at a 1280×720 viewport and
   navigate by slide id: `file.html#/<slide-id>` (the id is the slugified heading,
   e.g. `#/code-bash`). Querying `el.scrollWidth > el.clientWidth` is the reliable
-  way to catch overflow a screenshot can hide. There's a small inspector at
-  `~/scratch/inspect-slide.js`.
+  way to catch overflow a screenshot can hide.
 
 What to scan for, worst-case slides first (dense tables, 3+ columns, long code,
 images + callout):
@@ -133,6 +132,7 @@ no asset wrangling needed.
 | `_quarto.yml`         | Quarto config — rarely needs editing                            |
 | `build.sh`            | Render HTML + produce PDF in one command (`./build.sh`)         |
 | `new-presentation.sh` | Scaffold a new talk (`./new-presentation.sh <dir> "Title"`)     |
+| `_extensions/`        | Vendored Quarto extensions (roughnotation, highlightword, chat-bubbles) — snapshot copies, committed |
 
 `template.qmd` includes one example of every key slide pattern. Keep the slides
 you need, replace placeholder content.
@@ -218,6 +218,9 @@ for the markup detail.
 | "Chemistry / math: sub/superscript, equations"     | `~x~` `^x^`, `$…$` inline, `$$…$$` display   |
 | "Acknowledgments / contributors + funding"         | Acknowledgments slide (60/40 columns)        |
 | "Reveal bullets one at a time"                     | `. . .` fragments between bullet groups     |
+| "Circle / underline / highlight a phrase on click" | `[...]{.rn-fragment}` (rough notation)      |
+| "Highlight one word in a code block on click"      | `.highlightword` fragment div               |
+| "Show a chat / AI-assistant conversation"          | `.chat` + `.bubble-left/right` bubbles      |
 | "Toggle two images/versions in the same spot"      | `.r-stack` + fade fragments (swap in place) |
 | "Add speaker notes / presenter cues"               | `::: {.notes}` div (presenter view only)    |
 | "Scatter logos / place things at exact spots"      | `.absolute` (top/left/right/bottom + width)  |

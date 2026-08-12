@@ -486,6 +486,25 @@ Use `. . .` to pause between bullet groups:
 Good for demos or walk-throughs where revealing all bullets at once would give away the answer.
 :::
 
+## Animated Emphasis (rough notation)
+
+::: {.text-md}
+Wrap a phrase in `[...]{.rn-fragment}` and a hand-drawn annotation sweeps over
+it on click — each one is a normal fragment step. Advance to draw these:
+:::
+
+- The default is a [highlighter sweep]{.rn-fragment} — no options needed
+- Circle the [one number that matters]{.rn-fragment rn-type=circle rn-color="#E35B6A"}
+- Underline a [key term]{.rn-fragment rn-type=underline rn-color="#1C6D72"}
+- Strike through the [old way of doing it]{.rn-fragment rn-type=strike-through rn-color="#E35B6A"}
+
+::: {.callout-tip appearance="simple"}
+### When to use
+Landing one phrase mid-sentence without reaching for bold or a box. Types:
+`highlight`, `circle`, `underline`, `box`, `strike-through`, `bracket`.
+Stick to brand colors: teal `#1C6D72`, accent `#E35B6A`, default yellow.
+:::
+
 ## Swap in Place (r-stack)
 
 ::: {.text-md}
@@ -681,6 +700,35 @@ sbatch --nodes=4 --ntasks-per-node=8 \
 
 The whole block stays in view while you spotlight one part at a time.
 
+## Highlight a Word in Code {.slide-code}
+
+::: {.text-md}
+`code-line-numbers` spotlights whole lines; the `highlightword` plugin marks a
+single token on click. Add an empty div naming the `word` (plus optional match
+`number`, `chunk`, and CSS `style`) — advance the slide to see both fire:
+:::
+
+```bash
+sbatch --nodes=4 --ntasks-per-node=8 \
+       --time=01:00:00 \
+       run.slurm
+```
+
+::: {.fragment .highlightword word="nodes" style="background:#6AD1E366;"}
+:::
+
+::: {.fragment .highlightword word="run.slurm" style="background:#6AD1E366;"}
+:::
+
+::: {.text-sm}
+The markup behind the first click:
+
+```markdown
+::: {.fragment .highlightword word="nodes" style="background:#6AD1E366;"}
+:::
+```
+:::
+
 ## Auto-Animate: build a command {auto-animate=true}
 
 Same title + `{auto-animate=true}` on both slides → reveal morphs one into the next.
@@ -822,6 +870,33 @@ echo "done — the copy button stays pinned in the header while this scrolls"
 ```
 :::
 
+## Chat Conversation {.slide-ai}
+
+::: {.text-md}
+For AI-assistant transcripts, wrap messages in `.chat`. Bubbles reveal per
+click and the conversation auto-scrolls once it outgrows the slide.
+`.bubble-right` is you; `.bubble-left` the other party (brand colors):
+:::
+
+::: {.chat}
+::: {.bubble-right}
+Why is my job stuck in the queue?
+:::
+
+::: {.fragment .bubble-left}
+`squeue` shows it pending on `Resources` — you asked for 4 GPUs on a
+partition with 2 per node.
+:::
+
+::: {.fragment .bubble-right}
+So split it across two nodes?
+:::
+
+::: {.fragment .bubble-left}
+Yes — `--nodes=2 --gpus-per-node=2`, and it schedules immediately.
+:::
+:::
+
 ## Compact Table (dense matrices)
 
 ::: {.text-xs}
@@ -950,6 +1025,9 @@ Add a class to any `##` heading to swap the default bar for a topic icon:
 | `{.slide-compute}` | CPU chip | hardware, resources |
 | `{.slide-flow}` | `>>` chevrons | workflow, setup steps |
 | `{.slide-cluster}` | node triangle | distributed, parallel |
+| `{.slide-ai}` | bot head | AI assistants, LLMs |
+| `{.slide-storage}` | database | data, filesystems, quotas |
+| `{.slide-doc}` | document | docs, papers, config |
 
 :::
 ::: {.column width="45%"}
@@ -962,6 +1040,9 @@ Add a class to any `##` heading to swap the default bar for a topic icon:
 ## Resource Needs    {.slide-compute}
 ## Setup Steps       {.slide-flow}
 ## Parallel Jobs     {.slide-cluster}
+## Ask the Assistant {.slide-ai}
+## Storage & Quotas  {.slide-storage}
+## Reading the Docs  {.slide-doc}
 ```
 No class = default vertical bar.
 :::

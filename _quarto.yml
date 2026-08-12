@@ -5,6 +5,11 @@ project:
 format:
   revealjs:
     theme: [default, custom.scss]
+    filters:
+      - roughnotation
+    revealjs-plugins:
+      - highlightword
+      - chat-bubbles
     transition: slide
     code-overflow: wrap
     code-copy: true
@@ -18,8 +23,6 @@ format:
     width: 1280
     height: 720
     center: true
-
-from: markdown+emoji
 
 execute:
   echo: true

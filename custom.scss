@@ -178,17 +178,21 @@ h2 {
 
 // ── Custom slide-type icons ───────────────────────────────────────────────────
 // Opt-in per slide. Replace the default vertical bar with a topic-specific
-// SVG icon designed for HPC/research presentations.
+// SVG icon (Lucide-style 24×24 stroke art, stroke = $brand-teal as %231C6D72).
 //
 // Usage:  ## My Heading {.slide-code}
 // The class lands on the <section> so selectors use: .slide-X h2::before
+// To add an icon: one map entry below + a row in slide-patterns.md.
 //
 // Available:
 //   .slide-code    — >_ terminal prompt   (CLI commands, code examples)
 //   .slide-data    — bar chart            (results, benchmarks, performance)
 //   .slide-compute — CPU chip             (hardware, resources, allocation)
 //   .slide-flow    — >> double chevron    (workflow, setup steps, process)
-//   .slide-cluster — triangle of nodes   (distributed, multi-node, parallel)
+//   .slide-cluster — triangle of nodes    (distributed, multi-node, parallel)
+//   .slide-ai      — bot head             (AI assistants, LLMs, agents)
+//   .slide-storage — database cylinder    (data, filesystems, quotas)
+//   .slide-doc     — text document        (docs, papers, config files)
 
 // Shared override: swap bar for SVG icon
 %slide-icon-base {
@@ -203,48 +207,24 @@ h2 {
   }
 }
 
-// >_ terminal prompt
-.slide-code {
-  @extend %slide-icon-base;
-  h2::before {
-    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231C6D72' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='4 9 9 12 4 15'/><line x1='12' y1='15' x2='20' y2='15'/></svg>") !important;
-    background: none;
-  }
-}
+$slide-icons: (
+  code:    "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231C6D72' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='4 9 9 12 4 15'/><line x1='12' y1='15' x2='20' y2='15'/></svg>",
+  data:    "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231C6D72' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><line x1='3' y1='20' x2='21' y2='20'/><rect x='4' y='13' width='3' height='7'/><rect x='10.5' y='8' width='3' height='12'/><rect x='17' y='4' width='3' height='16'/></svg>",
+  compute: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231C6D72' stroke-width='1.8' stroke-linecap='round'><rect x='7' y='7' width='10' height='10' rx='1'/><line x1='9' y1='7' x2='9' y2='4'/><line x1='15' y1='7' x2='15' y2='4'/><line x1='9' y1='17' x2='9' y2='20'/><line x1='15' y1='17' x2='15' y2='20'/><line x1='7' y1='9' x2='4' y2='9'/><line x1='7' y1='15' x2='4' y2='15'/><line x1='17' y1='9' x2='20' y2='9'/><line x1='17' y1='15' x2='20' y2='15'/></svg>",
+  flow:    "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231C6D72' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='5 6 12 12 5 18'/><polyline points='12 6 19 12 12 18'/></svg>",
+  cluster: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231C6D72' stroke-width='2' stroke-linecap='round'><circle cx='12' cy='4' r='2'/><circle cx='4' cy='19' r='2'/><circle cx='20' cy='19' r='2'/><line x1='12' y1='6' x2='5' y2='17'/><line x1='12' y1='6' x2='19' y2='17'/><line x1='6' y1='19' x2='18' y2='19'/></svg>",
+  ai:      "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231C6D72' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='3.5' r='1.5'/><line x1='12' y1='5' x2='12' y2='8'/><rect x='4' y='8' width='16' height='12' rx='2'/><line x1='9' y1='13' x2='9' y2='15'/><line x1='15' y1='13' x2='15' y2='15'/></svg>",
+  storage: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231C6D72' stroke-width='2' stroke-linecap='round'><ellipse cx='12' cy='5' rx='8' ry='3'/><path d='M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5'/><path d='M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3'/></svg>",
+  doc:     "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231C6D72' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z'/><polyline points='14 3 14 9 20 9'/><line x1='8' y1='13' x2='16' y2='13'/><line x1='8' y1='17' x2='16' y2='17'/></svg>",
+);
 
-// Bar chart — results / benchmarks / data
-.slide-data {
-  @extend %slide-icon-base;
-  h2::before {
-    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231C6D72' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><line x1='3' y1='20' x2='21' y2='20'/><rect x='4' y='13' width='3' height='7'/><rect x='10.5' y='8' width='3' height='12'/><rect x='17' y='4' width='3' height='16'/></svg>") !important;
-    background: none;
-  }
-}
-
-// CPU chip — hardware / resources / allocation
-.slide-compute {
-  @extend %slide-icon-base;
-  h2::before {
-    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231C6D72' stroke-width='1.8' stroke-linecap='round'><rect x='7' y='7' width='10' height='10' rx='1'/><line x1='9' y1='7' x2='9' y2='4'/><line x1='15' y1='7' x2='15' y2='4'/><line x1='9' y1='17' x2='9' y2='20'/><line x1='15' y1='17' x2='15' y2='20'/><line x1='7' y1='9' x2='4' y2='9'/><line x1='7' y1='15' x2='4' y2='15'/><line x1='17' y1='9' x2='20' y2='9'/><line x1='17' y1='15' x2='20' y2='15'/></svg>") !important;
-    background: none;
-  }
-}
-
-// Double chevron >> — workflow / setup / steps
-.slide-flow {
-  @extend %slide-icon-base;
-  h2::before {
-    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231C6D72' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='5 6 12 12 5 18'/><polyline points='12 6 19 12 12 18'/></svg>") !important;
-    background: none;
-  }
-}
-
-// Triangle of nodes — cluster / parallel / distributed
-.slide-cluster {
-  @extend %slide-icon-base;
-  h2::before {
-    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231C6D72' stroke-width='2' stroke-linecap='round'><circle cx='12' cy='4' r='2'/><circle cx='4' cy='19' r='2'/><circle cx='20' cy='19' r='2'/><line x1='12' y1='6' x2='5' y2='17'/><line x1='12' y1='6' x2='19' y2='17'/><line x1='6' y1='19' x2='18' y2='19'/></svg>") !important;
-    background: none;
+@each $name, $svg in $slide-icons {
+  .slide-#{$name} {
+    @extend %slide-icon-base;
+    h2::before {
+      background-image: url("data:image/svg+xml,#{$svg}") !important;
+      background: none;
+    }
   }
 }
 
@@ -807,4 +787,24 @@ div.sourceCode pre {
       letter-spacing: -0.02em;
     }
   }
+}
+
+// ── Chat bubbles (extension: EmilHvitfeldt/chat-bubbles) ──────────────────────
+// Rebrand the extension's iMessage palette. The extension CSS
+// (_extensions/EmilHvitfeldt/chat-bubbles/chat-bubbles.css) reads these
+// custom properties; scoping them to .reveal beats its :root defaults
+// regardless of stylesheet load order.
+//   .bubble-right  = self (teal)      .bubble-left   = other (gray)
+//   .bubble-left-2 = 2nd other (green)  .bubble-left-3 = 3rd other (accent)
+.reveal {
+  --bubble-blue:   #{$brand-teal};
+  --bubble-gray:   #eef1f2;
+  --bubble-green:  #{$brand-green};
+  --bubble-purple: #{$brand-accent};
+}
+
+// Cap conversation height so the auto-scroll kicks in instead of the
+// bubbles pushing past the brand rule at the bottom of the slide.
+.reveal .chat {
+  max-height: 520px;
 }

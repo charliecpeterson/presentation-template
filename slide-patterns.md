@@ -282,6 +282,62 @@ than two states, give each a successive `fragment-index` and the matching
 `.fade-in-then-out`. Note: fragments inside an r-stack flatten in PDF export
 (decktape shows the layers overlapping), so keep the swap optional to the point.
 
+### Animated emphasis (rough notation)
+
+```markdown
+- Circle the [one number that matters]{.rn-fragment rn-type=circle rn-color="#E35B6A"}
+```
+
+Extension: `roughnotation` (filter, wired in `_quarto.yml`). Wraps a phrase in a
+hand-drawn annotation that sweeps over it as a fragment step. `rn-type`:
+`highlight` (default, yellow marker), `circle`, `underline`, `box`,
+`strike-through`, `bracket`. Set `rn-color` to a brand color for everything
+except the default highlight: teal `#1C6D72` or accent `#E35B6A`. Use instead
+of bold/emoji when landing one phrase mid-sentence. One or two per slide, max.
+PDF caveat: the annotations are drawn by JS on fragment events, which never
+fire in print context — the PDF shows the plain unannotated text. Fine for a
+handout, but don't hang the slide's meaning on the annotation alone.
+
+### Word highlight in code (highlightword)
+
+```markdown
+::: {.fragment .highlightword word="nodes" style="background:#6AD1E366;"}
+:::
+```
+
+Extension: `highlightword` (revealjs plugin, wired in `_quarto.yml`). An empty
+fenced div that, on its fragment step, paints `style` over the first occurrence
+of `word` in the slide's first code block. `number=2` targets the second
+occurrence, `chunk=2` the second code block. Complements `code-line-numbers`
+(whole lines) with token-level emphasis. Caveat: matching is against the
+syntax-highlighted HTML, so a `word` that the highlighter splits into multiple
+tokens (e.g. `--nodes=4`) silently fails to match — pick a single token and
+check the highlight actually fires in preview.
+
+### Chat conversation (chat-bubbles)
+
+```markdown
+::: {.chat}
+::: {.bubble-right}
+Why is my job stuck in the queue?
+:::
+
+::: {.fragment .bubble-left}
+It's pending on `Resources` — you asked for 4 GPUs on a 2-GPU partition.
+:::
+:::
+```
+
+Extension: `chat-bubbles` (revealjs plugin, wired in `_quarto.yml`). Messages
+render as rounded chat bubbles, revealed per click with `.fragment`, and the
+conversation auto-scrolls once it outgrows the slide (capped at 520px in
+`custom.scss`). `.bubble-right` = self (teal), `.bubble-left` = other (gray);
+`.bubble-left-2` (green) and `.bubble-left-3` (accent) for more participants —
+colors are rebranded in `custom.scss`, not iMessage defaults. Made for
+AI-assistant transcripts; for a long transcript the audience should scroll
+themselves, use `.scroll-box.prose` instead. Skip the extension's emoji
+`.reaction` feature.
+
 ### Speaker notes
 
 ```markdown
@@ -319,8 +375,10 @@ slide pattern uses one by default — the running joke is a cat on the final sli
 
 - Keep bullets to 4–6 items max per column
 - Pair a list with a callout or image on most slides — avoid full-width bullet dumps
-- **Never use emoji in `##` headings** — use the custom SVG icon classes below instead, or no class
-- Emoji are acceptable in bullet list items only when genuinely semantic (e.g. ✅ for done)
+- **No emoji in slide content.** For headings use the SVG icon classes below (or no
+  class); for status in tables use `.pill-yes/partial/no`; for emphasis use
+  rough notation. Emoji only where they're the literal subject matter (e.g. a
+  slide about chat reactions).
 - Wrap most slide content in `{.text-md}` unless the slide is sparse
 
 ### Heading icon classes — append to `## Title {.class}`
@@ -332,7 +390,13 @@ slide pattern uses one by default — the running joke is a cat on the final sli
 | `{.slide-compute}` | CPU chip       | hardware, resource allocation, GPU specs      |
 | `{.slide-flow}`    | `>>` chevrons  | workflow, setup steps, numbered process       |
 | `{.slide-cluster}` | node triangle  | distributed, multi-node, parallel computing   |
+| `{.slide-ai}`      | bot head       | AI assistants, LLMs, agents                   |
+| `{.slide-storage}` | database       | data, filesystems, quotas                     |
+| `{.slide-doc}`     | document       | docs, papers, config files                    |
 | *(none)*           | vertical bar   | general content — default for anything else   |
+
+Icons are Lucide-style 24×24 stroke SVGs inlined as data URIs in the
+`$slide-icons` map in `custom.scss` — adding one is a single map entry.
 
 Assign the icon by content type. Most slides use the default (no class).
 
