@@ -132,7 +132,7 @@ no asset wrangling needed.
 | `_quarto.yml`         | Quarto config — rarely needs editing                            |
 | `build.sh`            | Render HTML + produce PDF in one command (`./build.sh`)         |
 | `new-presentation.sh` | Scaffold a new talk (`./new-presentation.sh <dir> "Title"`)     |
-| `_extensions/`        | Vendored Quarto extensions (roughnotation, highlightword, chat-bubbles) — snapshot copies, committed |
+| `_extensions/`        | Vendored Quarto extensions (roughnotation, highlightword, chat-bubbles, countdown) — snapshot copies, committed |
 | `assets/charts/`      | Brand-styled example chart SVGs + `make-examples.mjs` generator |
 
 `template.qmd` includes one example of every key slide pattern. Keep the slides
@@ -222,6 +222,12 @@ for the markup detail.
 | "Circle / underline / highlight a phrase on click" | `[...]{.rn-fragment}` (rough notation)      |
 | "Highlight one word in a code block on click"      | `.highlightword` fragment div               |
 | "Show a chat / AI-assistant conversation"          | `.chat` + `.bubble-left/right` bubbles      |
+| "Hands-on exercise / now you try it"               | `.exercise` block (+ countdown timer)       |
+| "Give attendees a timed break / task timer"        | `{{< countdown "5:00" >}}` shortcode        |
+| "Workshop setup / follow-along / login steps"      | Follow Along slide (steps + QR)             |
+| "Page through several screenshots in place"        | Screenshot carousel (`.r-stack` + fragments)|
+| "Keep the molecule/system visible across slides"   | `.context-pin` image + auto-animate         |
+| "Center / size a screenshot"                       | `.img-frame` (`.short`/`.tall`), `.center-content` |
 | "Draw an architecture / pipeline / flow diagram"   | ```` ```{mermaid} ```` block (brand-themed) |
 | "Milestones / roadmap / history with dates"        | `.timeline` list                            |
 | "Part-to-whole or hierarchy chart (not a pie)"     | treemap/sunburst SVG (`assets/charts/`)     |

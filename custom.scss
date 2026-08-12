@@ -813,6 +813,90 @@ div.sourceCode pre {
   }
 }
 
+// ── Image & layout utilities ──────────────────────────────────────────────────
+// .img-frame: the standard treatment for screenshots — centered, capped in both
+// dimensions, rounded. Replaces the inline style soup that screenshot-heavy
+// talks otherwise repeat on every <img>. Size variants stack: {.img-frame .tall}
+.reveal img.img-frame {
+  display: block;
+  margin: 0.3em auto;
+  max-width: 100%;
+  max-height: 400px;
+  width: auto;
+  height: auto;
+  border-radius: 6px;
+}
+
+.reveal img.img-frame.tall  { max-height: 540px; }  // portrait / full-slide shots
+.reveal img.img-frame.short { max-height: 280px; }  // shot + bullets on one slide
+
+// Center a block of mixed content (image + caption, a lone figure)
+.center-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+// ── Context pin ───────────────────────────────────────────────────────────────
+// A small reference image pinned top-right across consecutive slides (e.g. the
+// molecule under discussion while the data below changes). Fixed geometry so
+// the anchor is pixel-identical from slide to slide — no hand-copied .absolute
+// coordinates. Pair with {auto-animate=true} so it holds still across slides.
+// position: fixed, not absolute — reveal's center:true gives every section a
+// different style.top (computed from its content height), so an absolute pin
+// drifts between slides. The .slides wrapper carries a CSS transform, which
+// makes it the containing block for fixed descendants: the pin anchors to the
+// 1280×720 canvas itself, identical on every slide regardless of centering.
+.reveal img.context-pin {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  max-width: 230px;
+  max-height: 200px;   // caps portrait images too — the pin is a thumbnail, not a figure
+  width: auto;
+  height: auto;
+  border-radius: 6px;
+  border: 1px solid #e3e6e8;
+  background: $brand-bg;
+  padding: 4px;
+  z-index: 3;
+}
+
+// ── Exercise block ────────────────────────────────────────────────────────────
+// Hands-on workshop task. Green = "do this now" (same family as callout-tip).
+// Usage:
+//   ::: {.exercise}
+//   **Submit your first job** (~10 min)
+//
+//   1. steps…
+//   :::
+// Pair with a countdown shortcode on the same slide for timed exercises.
+.reveal .exercise {
+  position: relative;
+  margin-top: 1.3em;
+  padding: 0.8em 1em 0.5em;
+  border: 1px solid rgba($brand-green, 0.35);
+  border-left: 6px solid $brand-green;
+  border-radius: 8px;
+  background: rgba($brand-green, 0.05);
+
+  &::before {
+    content: 'EXERCISE';
+    position: absolute;
+    top: -0.9em;
+    left: 14px;
+    padding: 0.3em 0.9em;
+    border-radius: 999px;
+    background: $brand-green;
+    color: #fff;
+    font-size: 0.48em;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+}
+
 // ── Timeline ──────────────────────────────────────────────────────────────────
 // Usage: wrap a bullet list in ::: {.timeline}
 //

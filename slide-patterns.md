@@ -318,6 +318,103 @@ div; `.table-compact` tightens padding and font further.
 Positions teal label chips in percent coordinates over an image so they track
 it as it scales. Use `**bold**` inside a label for a cyan-highlighted key term.
 
+### Images: .img-frame and .center-content
+
+```markdown
+<img src="assets/shot.png" class="img-frame" alt="…">
+```
+
+`.img-frame` is the standard screenshot treatment: centered, capped in both
+dimensions, rounded corners. Variants: `.short` (280px, shot + bullets),
+default (400px), `.tall` (540px, portrait/full-slide). Use it instead of
+inline `style="max-width…"` on every image. `.center-content` centers a mixed
+block (image + caption) — both were previously re-invented per talk.
+
+### Screenshot carousel (r-stack gallery)
+
+```markdown
+::: {.r-stack}
+::: {.fragment .fade-out fragment-index=0}
+<img src="assets/app1.png" class="img-frame short">
+:::
+::: {.fragment .fade-in-then-out fragment-index=0}
+<img src="assets/app2.png" class="img-frame short">
+:::
+::: {.fragment .fade-in fragment-index=1}
+<img src="assets/app3.png" class="img-frame short">
+:::
+:::
+```
+
+Pages through N screenshots in one frame. Recipe: first image `.fade-out
+fragment-index=0`; middle images `.fade-in-then-out` with fragment-index 0, 1,
+2, …; last image plain `.fade-in` with the final index (so it stays). PDF
+export prints the layers overlapping — keep carousels optional to the point.
+
+### Context pin
+
+```markdown
+## Slide A {auto-animate=true}
+<img src="assets/molecule.png" class="context-pin" alt="…">
+…data…
+
+## Slide B {auto-animate=true}
+<img src="assets/molecule.png" class="context-pin" alt="…">
+…more data…
+```
+
+Pins a small reference image (the molecule, the architecture, the dataset) at
+fixed top-right canvas coordinates across consecutive slides while the content
+below changes — the audience keeps orientation during a data walkthrough.
+Geometry lives in the class (capped 230×200px, `position: fixed` so reveal's
+per-slide vertical centering can't drift it). `{auto-animate=true}` on the
+whole run makes the transition seamless. The pin overlays the content area:
+keep pin-slide content in a ~75% column (or short lines) so nothing runs
+underneath it.
+
+### Exercise block + countdown (workshops)
+
+```markdown
+::: {.exercise}
+**Submit your first array job** (~5 min)
+
+1. step…
+2. step…
+
+Goal: what done looks like.
+:::
+
+{{< countdown "5:00" bottom="0" right="0" >}}
+```
+
+`.exercise` is the do-it-now box: green EXERCISE chip, bold first line =
+title + time estimate, numbered steps, and a "Goal:" line so attendees know
+when they're done. The `countdown` shortcode (extension:
+`gadenbuie/countdown`, wired via `_extensions/`) drops a click-to-start timer;
+brand colors are configured under the `countdown:` key in `_quarto.yml`
+(idle teal → running green → warning amber → finished red). Position with
+`bottom`/`right`/`top`/`left` attributes.
+
+### Follow-along setup slide
+
+The workshop opener: numbered `.steps` (login, clone, env, check) in the wide
+column, QR + URL in the narrow one. The check step should print a single
+unambiguous word (`ready`) so attendees self-verify. Regenerate the QR for a
+new talk:
+
+```bash
+npx qrcode -t svg -d '#1C6D72' -o assets/qr-materials.svg '<materials-url>'
+```
+
+### Computed tables — a decision, not a default
+
+The template is display-only: no R/Python execution at render time, so a clone
+renders anywhere Quarto runs. Research talks that want live-computed tables
+(kable/gt/pandas) can opt in per talk — add `knitr: true` (or a jupyter
+kernel) to the talk's YAML and accept that rendering now needs that
+environment. Prefer pasting computed results as markdown tables or SVG unless
+the numbers genuinely change between renders.
+
 ### Swap in place (r-stack)
 
 ```markdown

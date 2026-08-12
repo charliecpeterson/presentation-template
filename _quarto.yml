@@ -28,3 +28,17 @@ execute:
   echo: true
   warning: false
   cache: false
+
+# Brand styling for {{< countdown >}} timers (gadenbuie/countdown extension)
+countdown:
+  font_size: "2.2rem"
+  color_border: "#1C6D72"
+  color_text: "#1C6D72"
+  color_background: "#ffffff"
+  color_running_border: "#21A364"
+  color_running_text: "#21A364"
+  color_warning_border: "#E0A32E"
+  color_warning_text: "#E0A32E"
+  color_finished_border: "#E35B6A"
+  color_finished_text: "#E35B6A"
+  color_finished_background: "#fdeef0"

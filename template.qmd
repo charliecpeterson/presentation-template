@@ -57,12 +57,45 @@ An optional note, tip, or heads-up for your audience.
 :::
 ::: {.column width="40%"}
 ::: {.center-content}
-<!-- Replace with QR code: <img src="assets/qr.png" width="75%"> -->
+<img src="assets/qr-materials.svg" style="width: 210px;" alt="QR code to workshop materials">
+
+::: {.text-sm}
+Point your phone here
 :::
-::: {.callout-note appearance="simple"}
-### Before we start
-Any setup step or heads-up attendees should handle right now.
 :::
+:::
+::::
+:::
+
+## Follow Along {.slide-flow}
+
+::: {.text-md}
+:::: {.columns}
+::: {.column width="62%"}
+
+Set up now — flag a helper if any step fails:
+
+::: {.steps}
+1. **Log in** — `ssh you@cluster.university.edu`
+2. **Get materials** — `git clone https://github.com/YOUR-ORG/REPO`
+3. **Environment** — `module load python/3.11`
+4. **Check** — `python check_setup.py` prints `ready`
+:::
+
+:::
+::: {.column width="38%"}
+
+::: {.center-content}
+<img src="assets/qr-materials.svg" style="width: 200px;" alt="QR code to workshop materials">
+
+[github.com/YOUR-ORG/REPO](https://github.com)
+:::
+
+::: {.text-sm}
+Regenerate the QR for your repo:
+`npx qrcode -t svg -d '#1C6D72' -o assets/qr-materials.svg '<url>'`
+:::
+
 :::
 ::::
 :::
@@ -315,6 +348,25 @@ List any prerequisites or gotchas the audience should know.
 ::::
 :::
 
+## Hands-On: Submit a Job {.slide-code}
+
+::: {.text-md}
+`.exercise` marks the do-it-now block; the `{{{< countdown >}}}` timer starts
+on click and shifts amber, then red, as time runs out:
+:::
+
+::: {.exercise}
+**Submit your first array job** (~5 min)
+
+1. Copy the template: `cp /shared/ws/array.slurm .`
+2. Set `--array=1-10` and your email
+3. `sbatch array.slurm`, then watch it with `squeue -u $USER`
+
+Goal: ten tasks visible in the queue.
+:::
+
+{{< countdown "5:00" bottom="0" right="0" >}}
+
 ## Image + Caption
 
 ::: {.text-md}
@@ -529,6 +581,67 @@ Works with images, cards, or code blocks (here, two cards):
 ::: {.notes}
 Speaker notes live in `::: {.notes}` — visible in presenter view (press `s`),
 hidden on the slide and in PDF. Use them for what to *say*, not what to show.
+:::
+
+## Screenshot Carousel (r-stack)
+
+::: {.text-md}
+Page through N screenshots in one frame: `.fade-in-then-out` fragments with
+successive `fragment-index`, last one plain `.fade-in` so it stays.
+`.img-frame` replaces the per-image inline styling (variants: `.short`,
+default, `.tall`):
+:::
+
+::: {.r-stack}
+::: {.fragment .fade-out fragment-index=0}
+<img src="assets/personal/cat-orange.jpg" class="img-frame short" alt="Screenshot 1 of 3">
+:::
+::: {.fragment .fade-in-then-out fragment-index=0}
+<img src="assets/personal/cat-padfoot.jpg" class="img-frame short" alt="Screenshot 2 of 3">
+:::
+::: {.fragment .fade-in fragment-index=1}
+<img src="assets/personal/cats-two.jpg" class="img-frame short" alt="Screenshot 3 of 3">
+:::
+:::
+
+::: {.text-sm}
+Stand-ins for app screenshots. PDF export prints only the first image, so
+keep carousels optional to the point.
+:::
+
+## Walkthrough: Geometry {auto-animate=true .slide-chem}
+
+<img src="assets/personal/hedgehog-quill.jpg" class="context-pin" alt="System under discussion (stand-in)">
+
+::: {.text-md}
+:::: {.columns}
+::: {.column width="76%"}
+`.context-pin` keeps the system under discussion pinned top-right at fixed
+coordinates — no hand-copied `.absolute` values — while the content below
+changes. Keep pin-slide content in a ~75% column so it clears the pin.
+(Hedgehog standing in for your molecule.)
+
+- Bond lengths: r(An–O1) shortens 2.42 → 2.31 Å across the series
+- Angle O1–An–O2 stays linear within 2°
+:::
+::::
+:::
+
+## Walkthrough: Charges {auto-animate=true .slide-chem}
+
+<img src="assets/personal/hedgehog-quill.jpg" class="context-pin" alt="System under discussion (stand-in)">
+
+::: {.text-md}
+:::: {.columns}
+::: {.column width="76%"}
+Second slide of the pair — same pin, new content, `{auto-animate=true}` on
+both so the pin holds perfectly still. The audience never loses which system
+the numbers belong to.
+
+- NBO partial charge on the metal drops 1.8 → 1.4 e
+- Ligand donation tracks the bond-length trend
+:::
+::::
 :::
 
 <!-- ═══════════════════════════════════════════════════════════════════════════
