@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 470" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+<text x="8" y="40" font-size="14" font-weight="600" fill="#2a2a2a">Chemistry</text>
+<rect x="4" y="48" width="249.8527000650618" height="325.3529411764706" rx="4" fill="#1fa0ac"/>
+<text x="12" y="68" font-size="13" fill="#ffffff">DFT</text>
+<text x="12" y="86" font-size="12" fill="#ffffff">320k</text>
+<rect x="255.8527000650618" y="48" width="163.27833441769684" height="325.3529411764706" rx="4" fill="#47b1bb"/>
+<text x="263.8527000650618" y="68" font-size="13" fill="#ffffff">MD</text>
+<text x="263.8527000650618" y="86" font-size="12" fill="#ffffff">210k</text>
+<rect x="4" y="375.3529411764706" width="248.27862068965516" height="90.64705882352939" rx="4" fill="#70c3ca"/>
+<text x="12" y="395.3529411764706" font-size="13" fill="#2a2a2a">QM/MM</text>
+<text x="12" y="413.3529411764706" font-size="12" fill="#666666">90k</text>
+<rect x="254.27862068965516" y="375.3529411764706" width="164.85241379310344" height="90.64705882352939" rx="4" fill="#99d4d9"/>
+<text x="262.27862068965516" y="395.3529411764706" font-size="13" fill="#2a2a2a">Docking</text>
+<text x="262.27862068965516" y="413.3529411764706" font-size="12" fill="#666666">60k</text>
+<text x="429.1310344827586" y="40" font-size="14" font-weight="600" fill="#2a2a2a">ML / AI</text>
+<rect x="425.1310344827586" y="48" width="271.21318007662836" height="232.64935064935065" rx="4" fill="#e4ae47"/>
+<text x="433.1310344827586" y="68" font-size="13" fill="#ffffff">Training</text>
+<text x="433.1310344827586" y="86" font-size="12" fill="#ffffff">260k</text>
+<rect x="698.344214559387" y="48" width="113.59019157088119" height="232.64935064935065" rx="4" fill="#e9bd69"/>
+<text x="706.344214559387" y="68" font-size="13" fill="#ffffff">Inference</text>
+<text x="706.344214559387" y="86" font-size="12" fill="#ffffff">110k</text>
+<rect x="813.9344061302681" y="48" width="82.06559386973186" height="232.64935064935065" rx="4" fill="#eecb8a"/>
+<text x="821.9344061302681" y="68" font-size="13" fill="#2a2a2a">Fine-tune</text>
+<text x="821.9344061302681" y="86" font-size="12" fill="#666666">80k</text>
+<text x="429.1310344827586" y="300.64935064935065" font-size="14" font-weight="600" fill="#2a2a2a">Engineering</text>
+<rect x="425.1310344827586" y="308.64935064935065" width="249.21163793103455" height="157.35064935064935" rx="4" fill="#e66f7c"/>
+<text x="433.1310344827586" y="328.64935064935065" font-size="13" fill="#ffffff">CFD</text>
+<text x="433.1310344827586" y="346.64935064935065" font-size="12" fill="#ffffff">170k</text>
+<rect x="676.3426724137931" y="308.64935064935065" width="145.7715517241379" height="157.35064935064935" rx="4" fill="#eb8994"/>
+<text x="684.3426724137931" y="328.64935064935065" font-size="13" fill="#ffffff">FEA</text>
+<text x="684.3426724137931" y="346.64935064935065" font-size="12" fill="#ffffff">100k</text>
+<rect x="824.114224137931" y="308.64935064935065" width="71.88577586206895" height="157.35064935064935" rx="4" fill="#efa3ac"/>
+<text x="832.114224137931" y="328.64935064935065" font-size="13" fill="#2a2a2a">Other</text>
+<text x="832.114224137931" y="346.64935064935065" font-size="12" fill="#666666">50k</text>
+
+</svg>

@@ -799,6 +799,27 @@ Tool A achieves **~10x** speedup at comparable accuracy on this benchmark.
 ::::
 :::
 
+## Timeline {.slide-flow}
+
+::: {.text-md}
+Wrap a bullet list in `::: {.timeline}` — each bullet becomes a milestone on
+the line, evenly spaced. Bold lead = the label; 4–6 milestones fit well:
+:::
+
+::: {.timeline}
+- **2019** Cluster commissioned, 200 nodes
+- **2021** GPU partition added
+- **2023** Storage doubled to 8 PB
+- **2025** AI workbench launched
+- **2026** Next-gen procurement
+:::
+
+::: {.callout-tip appearance="simple"}
+### When to use
+Project history, roadmap, or a talk agenda with dates. For a process *without*
+dates use `.steps`; for a branching flow use a mermaid diagram.
+:::
+
 ## Callout Reference
 
 Always use `appearance="simple"` on all callouts.
@@ -913,6 +934,105 @@ Yes — `--nodes=2 --gpus-per-node=2`, and it schedules immediately.
 Wrap a ~20+ row table in `.text-xs` then `.table-compact` to fit it on one slide.
 :::
 
+## Mermaid Diagram {.slide-flow}
+
+::: {.text-md}
+Architecture and pipeline diagrams go in a ```` ```{mermaid} ```` block — no
+hand-drawn SVG needed. They're themed to the brand automatically via
+`custom.scss`:
+:::
+
+```{mermaid}
+%%| echo: false
+%%| fig-width: 10
+flowchart LR
+  A[Login node] --> B{Scheduler}
+  B -->|CPU job| C[Compute nodes]
+  B -->|GPU job| D[GPU nodes]
+  C --> E[(Scratch storage)]
+  D --> E
+  E --> F[Results]
+```
+
+::: {.text-sm}
+The source for this one is seven lines — see the mermaid section of
+`slide-patterns.md`. Global `echo: true` shows code blocks, so mermaid slides
+need `%%| echo: false` to render the diagram alone.
+:::
+
+::: {.text-sm}
+Flowcharts, sequence diagrams, gantt, `timeline`, `mindmap`, and `sankey-beta`
+all work. Mermaid's default look is fine for quick structure; for a polished
+part-to-whole or flow figure use the chart patterns on the next slides.
+:::
+
+## Part-to-Whole: Treemap {.slide-data}
+
+::: {.text-md}
+:::: {.columns}
+::: {.column width="63%"}
+<img src="assets/charts/treemap.svg" style="max-width: 100%; max-height: 480px;">
+:::
+::: {.column width="37%"}
+::: {.callout-tip appearance="simple"}
+### Instead of a pie
+Area = share, and the hierarchy (domain → method) fits in one view. Direct
+labels beat a legend; the 2px gaps do the separating, not borders.
+:::
+::: {.text-sm}
+Example figures live in `assets/charts/`; regenerate or adapt them with
+`make-examples.mjs` in the same directory.
+:::
+:::
+::::
+:::
+
+## Composition: Sunburst vs Packed Bubbles {.slide-data}
+
+::: {.text-sm}
+:::: {.columns}
+::: {.column width="50%"}
+<img src="assets/charts/sunburst.svg" style="max-width: 100%; max-height: 440px; display: block; margin: 0 auto;">
+
+Rings = hierarchy levels; the center carries the headline total. Best when
+the top level has ≤ 4 branches.
+:::
+::: {.column width="50%"}
+<img src="assets/charts/bubbles.svg" style="max-width: 100%; max-height: 440px; display: block; margin: 0 auto;">
+
+Magnitude at a glance, low precision — engagement, not measurement. Label the
+big bubbles; park exact values in a backup table.
+:::
+::::
+:::
+
+## Flow: Sankey {.slide-data}
+
+<img src="assets/charts/sankey.svg" style="max-width: 92%; max-height: 470px; display: block; margin: 0 auto;">
+
+::: {.text-sm}
+Where things came from and where they went — one emphasized flow in accent,
+the rest recessive gray. That emphasis *is* the slide's point.
+:::
+
+## Field Coverage: Voronoi {.slide-data}
+
+::: {.text-md}
+:::: {.columns}
+::: {.column width="63%"}
+<img src="assets/charts/voronoi.svg" style="max-width: 100%; max-height: 470px;">
+:::
+::: {.column width="37%"}
+::: {.callout-tip appearance="simple"}
+### When to use
+A continuous value over sampled 2-D space (composition space, parameter
+sweeps): each cell is the region nearest one sample, colored on a single-hue
+ramp. Dots mark the actual samples.
+:::
+:::
+::::
+:::
+
 ## Annotated Screenshot
 
 ::: {.text-md}
@@ -1012,11 +1132,12 @@ Brand colors — **never change these**:
 
 ## Heading Icon Classes {.slide-code}
 
-::: {.text-md}
-:::: {.columns}
-::: {.column width="55%"}
+::: {.text-sm}
+Add a class to any `##` heading (e.g. `## Setup {.slide-flow}`) to swap the
+default bar for a topic icon. No class = vertical bar:
 
-Add a class to any `##` heading to swap the default bar for a topic icon:
+:::: {.columns}
+::: {.column width="50%"}
 
 | Class | Icon | Use for |
 |---|---|---|
@@ -1026,26 +1147,22 @@ Add a class to any `##` heading to swap the default bar for a topic icon:
 | `{.slide-flow}` | `>>` chevrons | workflow, setup steps |
 | `{.slide-cluster}` | node triangle | distributed, parallel |
 | `{.slide-ai}` | bot head | AI assistants, LLMs |
-| `{.slide-storage}` | database | data, filesystems, quotas |
+| `{.slide-storage}` | database | data, filesystems |
+
+:::
+::: {.column width="50%"}
+
+| Class | Icon | Use for |
+|---|---|---|
 | `{.slide-doc}` | document | docs, papers, config |
+| `{.slide-chem}` | flask | chemistry, simulations |
+| `{.slide-net}` | globe | networking, APIs |
+| `{.slide-secure}` | padlock | auth, credentials |
+| `{.slide-fix}` | wrench | troubleshooting |
+| `{.slide-perf}` | gauge | performance, tuning |
 
-:::
-::: {.column width="45%"}
-
-::: {.callout-tip appearance="simple"}
-### Usage
-```
-## Running the Tool  {.slide-code}
-## Benchmark Results {.slide-data}
-## Resource Needs    {.slide-compute}
-## Setup Steps       {.slide-flow}
-## Parallel Jobs     {.slide-cluster}
-## Ask the Assistant {.slide-ai}
-## Storage & Quotas  {.slide-storage}
-## Reading the Docs  {.slide-doc}
-```
-No class = default vertical bar.
-:::
+Icons are one-line entries in the `$slide-icons` map in `custom.scss` —
+adding one is a single map entry.
 
 :::
 ::::

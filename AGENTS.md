@@ -133,6 +133,7 @@ no asset wrangling needed.
 | `build.sh`            | Render HTML + produce PDF in one command (`./build.sh`)         |
 | `new-presentation.sh` | Scaffold a new talk (`./new-presentation.sh <dir> "Title"`)     |
 | `_extensions/`        | Vendored Quarto extensions (roughnotation, highlightword, chat-bubbles) — snapshot copies, committed |
+| `assets/charts/`      | Brand-styled example chart SVGs + `make-examples.mjs` generator |
 
 `template.qmd` includes one example of every key slide pattern. Keep the slides
 you need, replace placeholder content.
@@ -221,6 +222,11 @@ for the markup detail.
 | "Circle / underline / highlight a phrase on click" | `[...]{.rn-fragment}` (rough notation)      |
 | "Highlight one word in a code block on click"      | `.highlightword` fragment div               |
 | "Show a chat / AI-assistant conversation"          | `.chat` + `.bubble-left/right` bubbles      |
+| "Draw an architecture / pipeline / flow diagram"   | ```` ```{mermaid} ```` block (brand-themed) |
+| "Milestones / roadmap / history with dates"        | `.timeline` list                            |
+| "Part-to-whole or hierarchy chart (not a pie)"     | treemap/sunburst SVG (`assets/charts/`)     |
+| "Show quantity flowing between stages"             | sankey SVG (`assets/charts/`)               |
+| "Value over a sampled 2-D space"                   | voronoi SVG (`assets/charts/`)              |
 | "Toggle two images/versions in the same spot"      | `.r-stack` + fade fragments (swap in place) |
 | "Add speaker notes / presenter cues"               | `::: {.notes}` div (presenter view only)    |
 | "Scatter logos / place things at exact spots"      | `.absolute` (top/left/right/bottom + width)  |

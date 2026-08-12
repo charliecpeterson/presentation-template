@@ -212,6 +212,31 @@ One ask. Concrete. With a clear next step (link, email, repo, sign-up, etc.)
 
 ---
 
+## Charts: pick the form by the data's job
+
+Decide the form before styling. The reader's task picks the chart; brand-styled
+examples for the non-obvious forms live in `assets/charts/` (markup and style
+contract in `slide-patterns.md`).
+
+| The audience must… | Use | Not |
+|---|---|---|
+| Read one headline number | `.stat-card` / big text | a chart at all |
+| Compare a few magnitudes | horizontal bar | pie, donut |
+| See a share of a whole, flat | stacked bar (≤ 6 segments) | pie with 10 slices |
+| See share *and* hierarchy | treemap, sunburst | nested pies |
+| Follow quantity through stages | sankey | table of percentages |
+| Grasp relative sizes casually | packed bubbles | 3-D anything |
+| See a value over a sampled space | voronoi / heatmap | scatter with color rainbow |
+| Follow change over time | line | bar-per-year for 20 years |
+| See structure / architecture | mermaid diagram | 40-word prose bullet |
+
+Rules that survive any chart type: direct labels beat legends; one hue ramp for
+magnitude, the validated trio for identity, accent for the one emphasized
+series; gray out everything that is context rather than message. A chart whose
+point needs a sentence to find is a table wearing a costume.
+
+---
+
 ## Anti-patterns reference
 
 | Pattern | Why it's bad | Fix |

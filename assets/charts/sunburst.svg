@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 450" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+<g transform="translate(225,225)">
+<path d="M0.9,-152.997A153,153,0,0,1,30.528,149.923L17.449,83.701A85.5,85.5,0,0,0,0.9,-85.495Z" fill="#0093A1" stroke="#ffffff" stroke-width="2"/>
+<text x="118.7" y="-11.6" font-size="13" text-anchor="middle" dominant-baseline="middle" fill="#ffffff">Chemistry</text>
+<path d="M28.762,150.272A153,153,0,0,1,-150.575,-27.133L-84.214,-14.771A85.5,85.5,0,0,0,15.683,84.049Z" fill="#E0A32E" stroke="#ffffff" stroke-width="2"/>
+<text x="-83.9" y="84.8" font-size="13" text-anchor="middle" dominant-baseline="middle" fill="#ffffff">ML / AI</text>
+<path d="M-150.245,-28.902A153,153,0,0,1,-0.9,-152.997L-0.9,-85.495A85.5,85.5,0,0,0,-83.885,-16.541Z" fill="#E35B6A" stroke="#ffffff" stroke-width="2"/>
+<text x="-76.2" y="-91.7" font-size="13" text-anchor="middle" dominant-baseline="middle" fill="#ffffff">Engineering</text>
+<path d="M0.9,-220.498A220.5,220.5,0,0,1,216.605,-41.263L154.669,-29.726A157.5,157.5,0,0,0,0.9,-157.497Z" fill="#59b9c2" stroke="#ffffff" stroke-width="2"/>
+<text x="120.8" y="-145.4" font-size="13" text-anchor="middle" dominant-baseline="middle" fill="#2a2a2a">DFT</text>
+<path d="M216.934,-39.494A220.5,220.5,0,0,1,165.521,145.682L118.399,103.865A157.5,157.5,0,0,0,154.999,-27.957Z" fill="#87ccd3" stroke="#ffffff" stroke-width="2"/>
+<text x="182.1" y="50.6" font-size="13" text-anchor="middle" dominant-baseline="middle" fill="#2a2a2a">MD</text>
+<path d="M164.326,147.028A220.5,220.5,0,0,1,43.607,216.145L31.4,154.338A157.5,157.5,0,0,0,117.204,105.211Z" fill="#b5e0e4" stroke="#ffffff" stroke-width="2"/>
+<text x="93.9" y="164.0" font-size="13" text-anchor="middle" dominant-baseline="middle" fill="#2a2a2a">QM/MM</text>
+<path d="M41.841,216.494A220.5,220.5,0,0,1,-176.435,132.253L-125.871,94.672A157.5,157.5,0,0,0,29.634,154.687Z" fill="#ebc377" stroke="#ffffff" stroke-width="2"/>
+<text x="-68.1" y="176.3" font-size="13" text-anchor="middle" dominant-baseline="middle" fill="#2a2a2a">Training</text>
+<path d="M-177.509,130.808A220.5,220.5,0,0,1,-216.934,-39.494L-154.999,-27.957A157.5,157.5,0,0,0,-126.945,93.227Z" fill="#f0d49d" stroke="#ffffff" stroke-width="2"/>
+<text x="-184.1" y="42.6" font-size="13" text-anchor="middle" dominant-baseline="middle" fill="#2a2a2a">Inference</text>
+<path d="M-216.605,-41.263A220.5,220.5,0,0,1,-134.156,-174.992L-96.03,-124.838A157.5,157.5,0,0,0,-154.669,-29.726Z" fill="#ed949e" stroke="#ffffff" stroke-width="2"/>
+<text x="-160.9" y="-99.2" font-size="13" text-anchor="middle" dominant-baseline="middle" fill="#2a2a2a">CFD</text>
+<path d="M-132.723,-176.082A220.5,220.5,0,0,1,-0.9,-220.498L-0.9,-157.497A157.5,157.5,0,0,0,-94.597,-125.927Z" fill="#f2b2b9" stroke="#ffffff" stroke-width="2"/>
+<text x="-60.3" y="-179.1" font-size="13" text-anchor="middle" dominant-baseline="middle" fill="#2a2a2a">FEA</text>
+<text y="-6" font-size="26" font-weight="700" text-anchor="middle" fill="#2a2a2a">1.45M</text>
+<text y="18" font-size="13" text-anchor="middle" fill="#666666">node-hours</text>
+</g>
+</svg>

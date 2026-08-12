@@ -173,6 +173,63 @@ Renders with a large decorative `"` mark, italic body with cyan left border, sma
 
 Renders as `01 / 02 / 03` teal counters beside each step. Use with `{.slide-flow}` heading class.
 
+### Timeline
+
+```markdown
+::: {.timeline}
+- **2019** Cluster commissioned
+- **2021** GPU partition added
+- **2023** Storage doubled
+:::
+```
+
+Each bullet becomes a milestone on a horizontal brand-gradient line, evenly
+spaced in document order. The bold lead renders as the teal label above the
+description. 4–6 milestones fit comfortably; more get cramped. For dated
+history, roadmaps, or an agenda-with-dates. Undated process → `.steps`;
+branching flow → mermaid.
+
+### Mermaid diagrams
+
+````markdown
+```{mermaid}
+%%| fig-width: 9
+flowchart LR
+  A[Login node] --> B{Scheduler}
+  B --> C[Compute nodes]
+```
+````
+
+Built into Quarto — no extension. Diagrams pick up brand colors automatically
+via the `$mermaid-*` SCSS variables in `custom.scss`. Flowcharts, sequence
+diagrams, gantt, `timeline`, `mindmap`, and `sankey-beta` all render. Use for
+architecture and pipeline structure; this replaces hand-authoring SVG diagram
+files for most cases (the never-inline-`<svg>` gotcha still applies to
+hand-written SVG). Size with `%%| fig-width: N`.
+
+### Chart figures (assets/charts/)
+
+```markdown
+<img src="assets/charts/treemap.svg" style="max-width: 100%; max-height: 480px;">
+```
+
+Five brand-styled example figures for data that outgrows bars and pies, with a
+generator script (`assets/charts/make-examples.mjs`) to adapt with real data:
+
+| File          | Form           | The job it does                                  |
+|---------------|----------------|--------------------------------------------------|
+| `treemap.svg` | treemap        | hierarchical part-to-whole (area = share)        |
+| `sunburst.svg`| sunburst       | same job as rings + a headline total in the hole |
+| `bubbles.svg` | packed bubbles | magnitude at a glance; engagement over precision |
+| `sankey.svg`  | sankey         | flow between stages, one path emphasized         |
+| `voronoi.svg` | voronoi        | continuous value over a sampled 2-D space        |
+
+Style contract baked into the generator: categorical trio `#0093A1 #E0A32E
+#E35B6A` (validated for colorblind separation on white), sequential = teal ramp,
+2px white gaps instead of borders, direct labels over legends, one emphasized
+series with the rest recessive. Keep those rules when adapting. Chart-choice
+guidance (which form for which data) lives in `content-design.md`.
+
 ### Stat cards
 
 ```markdown
@@ -393,6 +450,11 @@ slide pattern uses one by default — the running joke is a cat on the final sli
 | `{.slide-ai}`      | bot head       | AI assistants, LLMs, agents                   |
 | `{.slide-storage}` | database       | data, filesystems, quotas                     |
 | `{.slide-doc}`     | document       | docs, papers, config files                    |
+| `{.slide-chem}`    | conical flask  | chemistry, experiments, simulations           |
+| `{.slide-net}`     | globe          | networking, APIs, remote access               |
+| `{.slide-secure}`  | padlock        | auth, credentials, allocations                |
+| `{.slide-fix}`     | wrench         | troubleshooting, debugging, config            |
+| `{.slide-perf}`    | gauge          | performance, tuning, optimization             |
 | *(none)*           | vertical bar   | general content — default for anything else   |
 
 Icons are Lucide-style 24×24 stroke SVGs inlined as data URIs in the

@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 470" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+<path d="M14,80.96610169491525C218.5,80.96610169491525,218.5,80.96610169491525,423,80.96610169491525" fill="none" stroke="#c9ced1" stroke-opacity="0.55" stroke-width="145.9322033898305"/>
+<path d="M14,169.5677966101695C218.5,169.5677966101695,218.5,302.7542372881358,423,302.7542372881358" fill="none" stroke="#c9ced1" stroke-opacity="0.55" stroke-width="31.27118644067797"/>
+<path d="M14,340.38983050847463C218.5,340.38983050847463,218.5,251.22033898305085,423,251.22033898305085" fill="none" stroke="#c9ced1" stroke-opacity="0.55" stroke-width="27.796610169491526"/>
+<path d="M14,408.1440677966103C218.5,408.1440677966103,218.5,386.1440677966104,423,386.1440677966104" fill="none" stroke="#E35B6A" stroke-opacity="0.75" stroke-width="107.71186440677967"/>
+<path d="M14,248.89830508474577C218.5,248.89830508474577,218.5,195.6271186440678,423,195.6271186440678" fill="none" stroke="#c9ced1" stroke-opacity="0.55" stroke-width="83.38983050847457"/>
+<path d="M14,297.54237288135596C218.5,297.54237288135596,218.5,325.3389830508477,423,325.3389830508477" fill="none" stroke="#c9ced1" stroke-opacity="0.55" stroke-width="13.898305084745763"/>
+<path d="M437,127.87288135593221C641.5,127.87288135593221,641.5,127.87288135593221,846,127.87288135593221" fill="none" stroke="#c9ced1" stroke-opacity="0.55" stroke-width="239.74576271186442"/>
+<path d="M437,256.43220338983053C641.5,256.43220338983053,641.5,417.41525423728814,846,417.41525423728814" fill="none" stroke="#c9ced1" stroke-opacity="0.55" stroke-width="17.372881355932204"/>
+<path d="M437,356.61016949152565C641.5,356.61016949152565,641.5,317.23728813559325,846,317.23728813559325" fill="none" stroke="#c9ced1" stroke-opacity="0.55" stroke-width="138.98305084745763"/>
+<path d="M437,433.05084745762736C641.5,433.05084745762736,641.5,433.05084745762707,846,433.05084745762707" fill="none" stroke="#c9ced1" stroke-opacity="0.55" stroke-width="13.898305084745763"/>
+<rect x="0" y="8" width="14" height="177.20338983050848" rx="3" fill="#1C6D72"/>
+<text x="22" y="94.60169491525424" font-size="14"  fill="#2a2a2a" font-weight="600">Chemistry</text>
+<text x="22" y="111.60169491525424" font-size="12"  fill="#666666">510 jobs</text>
+<rect x="0" y="326.4915254237289" width="14" height="135.50847457627117" rx="3" fill="#1C6D72"/>
+<text x="22" y="392.2457627118645" font-size="14"  fill="#2a2a2a" font-weight="600">ML / AI</text>
+<text x="22" y="409.2457627118645" font-size="12"  fill="#666666">390 jobs</text>
+<rect x="0" y="207.20338983050848" width="14" height="97.2881355932204" rx="3" fill="#1C6D72"/>
+<text x="22" y="253.84745762711867" font-size="14"  fill="#2a2a2a" font-weight="600">Engineering</text>
+<text x="22" y="270.8474576271187" font-size="12"  fill="#666666">280 jobs</text>
+<rect x="423" y="8" width="14" height="257.1186440677968" rx="3" fill="#1C6D72"/>
+<text x="445" y="134.5593220338984" font-size="14"  fill="#2a2a2a" font-weight="600">CPU partition</text>
+<text x="445" y="151.5593220338984" font-size="12"  fill="#666666">740 jobs</text>
+<rect x="423" y="287.1186440677968" width="14" height="152.8813559322034" rx="3" fill="#1C6D72"/>
+<text x="445" y="361.5593220338985" font-size="14"  fill="#2a2a2a" font-weight="600">GPU partition</text>
+<text x="445" y="378.5593220338985" font-size="12"  fill="#666666">440 jobs</text>
+<rect x="846" y="8" width="14" height="378.728813559322" rx="3" fill="#1C6D72"/>
+<text x="838" y="195.364406779661" font-size="14" text-anchor="end" fill="#2a2a2a" font-weight="600">Completed</text>
+<text x="838" y="212.364406779661" font-size="12" text-anchor="end" fill="#666666">1090 jobs</text>
+<rect x="846" y="408.728813559322" width="14" height="31.27118644067798" rx="3" fill="#1C6D72"/>
+<text x="838" y="422.364406779661" font-size="14" text-anchor="end" fill="#2a2a2a" font-weight="600">Requeued</text>
+<text x="838" y="439.364406779661" font-size="12" text-anchor="end" fill="#666666">90 jobs</text>
+
+</svg>

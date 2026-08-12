@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 790 470" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+<circle cx="239.9" cy="239.8" r="82.0" fill="#26a3af" stroke="#ffffff" stroke-width="2"/>
+<text x="239.9" y="237.8" font-size="16" text-anchor="middle" fill="#ffffff" font-weight="600">gcc</text>
+<text x="239.9" y="254.8" font-size="12" text-anchor="middle" fill="#ffffff">940</text>
+<circle cx="405.0" cy="239.8" r="79.3" fill="#e5b14d" stroke="#ffffff" stroke-width="2"/>
+<text x="405.0" y="237.8" font-size="16" text-anchor="middle" fill="#ffffff" font-weight="600">python</text>
+<text x="405.0" y="254.8" font-size="12" text-anchor="middle" fill="#ffffff">880</text>
+<circle cx="324.9" cy="365.6" r="66.0" fill="#e5b14d" stroke="#ffffff" stroke-width="2"/>
+<text x="324.9" y="363.6" font-size="16" text-anchor="middle" fill="#ffffff" font-weight="600">cuda</text>
+<text x="324.9" y="380.6" font-size="12" text-anchor="middle" fill="#ffffff">610</text>
+<circle cx="324.8" cy="118.6" r="62.1" fill="#26a3af" stroke="#ffffff" stroke-width="2"/>
+<text x="324.8" y="116.6" font-size="16" text-anchor="middle" fill="#ffffff" font-weight="600">openmpi</text>
+<text x="324.8" y="133.6" font-size="12" text-anchor="middle" fill="#ffffff">540</text>
+<circle cx="207.5" cy="105.7" r="52.1" fill="#e5b14d" stroke="#ffffff" stroke-width="2"/>
+<text x="207.5" y="103.7" font-size="16" text-anchor="middle" fill="#ffffff" font-weight="600">R</text>
+<text x="207.5" y="120.7" font-size="12" text-anchor="middle" fill="#ffffff">380</text>
+<circle cx="208.8" cy="368.2" r="46.3" fill="#e77480" stroke="#ffffff" stroke-width="2"/>
+<text x="208.8" y="366.2" font-size="16" text-anchor="middle" fill="#ffffff" font-weight="600">matlab</text>
+<text x="208.8" y="383.2" font-size="12" text-anchor="middle" fill="#ffffff">300</text>
+<circle cx="436.3" cy="114.9" r="45.5" fill="#26a3af" stroke="#ffffff" stroke-width="2"/>
+<text x="436.3" y="112.9" font-size="16" text-anchor="middle" fill="#ffffff" font-weight="600">gaussian</text>
+<text x="436.3" y="129.9" font-size="12" text-anchor="middle" fill="#ffffff">290</text>
+<circle cx="437.8" cy="361.7" r="43.1" fill="#26a3af" stroke="#ffffff" stroke-width="2"/>
+<text x="437.8" y="359.7" font-size="16" text-anchor="middle" fill="#ffffff" font-weight="600">vasp</text>
+<text x="437.8" y="376.7" font-size="12" text-anchor="middle" fill="#ffffff">260</text>
+<circle cx="132.8" cy="169.5" r="42.3" fill="#e5b14d" stroke="#ffffff" stroke-width="2"/>
+<text x="132.8" y="167.5" font-size="16" text-anchor="middle" fill="#ffffff" font-weight="600">pytorch</text>
+<text x="132.8" y="184.5" font-size="12" text-anchor="middle" fill="#ffffff">250</text>
+<circle cx="140.3" cy="312.9" r="37.8" fill="#26a3af" stroke="#ffffff" stroke-width="2"/>
+<text x="140.3" y="310.9" font-size="15" text-anchor="middle" fill="#ffffff" font-weight="600">gromacs</text>
+<text x="140.3" y="327.9" font-size="12" text-anchor="middle" fill="#ffffff">200</text>
+<circle cx="497.4" cy="169.8" r="32.7" fill="#26a3af" stroke="#ffffff" stroke-width="2"/>
+<text x="497.4" y="167.8" font-size="13" text-anchor="middle" fill="#ffffff" font-weight="600">fftw</text>
+<text x="497.4" y="184.8" font-size="12" text-anchor="middle" fill="#ffffff">150</text>
+<circle cx="493.3" cy="309.4" r="29.3" fill="#e5b14d" stroke="#ffffff" stroke-width="2"/>
+<circle cx="391.2" cy="52.0" r="28.0" fill="#e77480" stroke="#ffffff" stroke-width="2"/>
+<circle cx="265.8" cy="47.1" r="26.7" fill="#e77480" stroke="#ffffff" stroke-width="2"/>
+<circle cx="253.7" cy="428.8" r="25.4" fill="#26a3af" stroke="#ffffff" stroke-width="2"/>
+<circle cx="400.1" cy="421.7" r="23.9" fill="#26a3af" stroke="#ffffff" stroke-width="2"/>
+<circle cx="652" cy="30" r="7" fill="#26a3af"/>
+<text x="666" y="35" font-size="13" fill="#2a2a2a">Science apps</text>
+<circle cx="652" cy="56" r="7" fill="#e5b14d"/>
+<text x="666" y="61" font-size="13" fill="#2a2a2a">Languages / ML</text>
+<circle cx="652" cy="82" r="7" fill="#e77480"/>
+<text x="666" y="87" font-size="13" fill="#2a2a2a">Commercial</text>
+
+</svg>
